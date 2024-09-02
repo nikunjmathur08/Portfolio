@@ -7,7 +7,6 @@ export default function Footer() {
     <footer className="mt-14 flex items-end justify-between px-5 py-4 sm:flex text-body-4 md:text-body-3">
       <div className="flex flex-col md:flex-row md:w-[62.5vw] lg:w-[57.5vw] justify-between">
         <div className="flex space-x-1">
-          <span>&copy;</span>
           <span>2024</span>
           <span className="font-extrabold uppercase 2xl:text-body-1">Nikunj Mathur</span>
         </div>

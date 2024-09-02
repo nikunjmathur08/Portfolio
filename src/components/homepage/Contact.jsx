@@ -124,7 +124,7 @@ export default function Contact() {
             <h4 className="text-body-1 2xl:text-4xl font-semibold">Contact Details</h4>
             <div className="flex flex-col space-y-3 text-body-2 2xl:text-3xl">
               <a
-                href="mailto:hello@huyng.xyz"
+                href="mailto:nikunjmathur0810@gmail.com"
                 className="group relative w-fit cursor-pointer"
                 target="_blank"
                 rel="noreferrer"
