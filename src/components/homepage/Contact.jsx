@@ -135,7 +135,7 @@ export default function Contact() {
               <a
                 href="https://drive.google.com/file/d/1ej8iI6Q0j4JHG4oBUCrMAhhzcwoE3Hnb/view?usp=sharing"
                 className="group relative w-fit cursor-pointer"
-                target="_blank"
+                target=""
                 rel="noreferrer"
               >
                 <span>Resume</span>
