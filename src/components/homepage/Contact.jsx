@@ -132,6 +132,15 @@ export default function Contact() {
                 <span>nikunjmathur0810@gmail.com</span>
                 <span className="absolute bottom-0 left-0 h-[0.12em] w-0 rounded-full bg-secondary-600 duration-300 ease-in-out group-hover:w-full"></span>
               </a>
+              <a
+                href="https://drive.google.com/file/d/1ej8iI6Q0j4JHG4oBUCrMAhhzcwoE3Hnb/view?usp=sharing"
+                className="group relative w-fit cursor-pointer"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span>Resume</span>
+                <span className="absolute bottom-0 left-0 h-[0.12em] w-0 rounded-full bg-secondary-600 duration-300 ease-in-out group-hover:w-full"></span>
+              </a>
              
             </div>
           </div>
