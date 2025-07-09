@@ -11,7 +11,7 @@ export default function Contact() {
   const heading = useRef(null)
   const body = useRef(null)
   const contactSection = useRef(null)
-  const apiURL = process.env.REACT_APP_API_URL;
+  const apiURL = import.meta.env.VITE_APP_API_URL;
 
   useEffect(() => {
     ScrollTrigger.create({
