@@ -11,6 +11,7 @@ export default function Contact() {
   const heading = useRef(null)
   const body = useRef(null)
   const contactSection = useRef(null)
+  const apiURL = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     ScrollTrigger.create({
@@ -45,7 +46,7 @@ export default function Contact() {
       message: e.target.message.value,
     };
 
-    const res = await fetch('http://localhost:4000/send', {
+    const res = await fetch(`${apiURL}/send`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
