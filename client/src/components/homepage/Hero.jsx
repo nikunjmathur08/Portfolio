@@ -10,36 +10,51 @@ export default function Hero() {
   const scroll = useRef(null)
 
   useEffect(() => {
-    const tl = gsap.timeline({ repeat: -1 });
-    tl.from(scrollLine.current, {
-      translateX: -40,
-      duration: 1.5,
-      ease: "power4.inOut",
-    });
-  }, []);
+    const ScrollTl = gsap.timeline({ repeat: -1 });
+    ScrollTl.fromTo(
+      scrollLine.current,
+      { translateX: -40 },
+      { translateX: 40, duration: 1.5, ease: "power4.inOut" }
+    );
 
-  useEffect(() => {
-    const tl = gsap.timeline();
+    const mainTl = gsap.timeline();
 
-    tl.from(imgContainer.current, {
-      scale: 1.3,
+    gsap.set(imgContainer.current, { scale: 0.9 });
+    gsap.set(img.current, { scale: 1.5 });
+
+    mainTl.to(imgContainer.current, {
+      scale: 1,
       duration: 3.25,
-      ease: "power3.inOut",
+      ease: "power3.inOut"
     })
-      .from(
-        img.current,
-        { scale: 2, duration: 3.2, ease: "power4.inOut" },
-        "-=3.1"
-      )
-      .to(titles.current, { y: 0, duration: 2, ease: "power4.inOut" }, "-=2.5")
-      .from(scroll.current, {opacity: 0, duration: 1, ease:"out"}, "-=2")
+    .to(
+      img.current,
+      { scale: 1, duration: 3.2, ease: "power4.inOut" },
+      "-=3.1"
+    )
+    .to(
+      titles.current,
+      { y: 0, duration: 2, ease: "power4.inOut" },
+      "-=2.5"
+    )
+    .fromTo(
+      scroll.current,
+      { opacity: 0 },
+      { opacity: 1, duration: 1, ease: "out" },
+      "-=2"
+    );
+
+    return () => {
+      ScrollTl.kill();
+      mainTl.kill();
+      gsap.set([imgContainer.current, img.current], { clearProps: "all" });
+    };
   }, []);
 
   return (
     <section id="hero" className="hero relative flex w-full h-screen select-none items-center justify-center" aria-label="hero">
-      <div className="z-10 flex flex-col  w-full items-center text-title 2xl:text-[10vw] 2xl:space-y-16 font-bold  uppercase text-accent-300">
+      <div className="z-10 flex flex-col w-full items-center text-title 2xl:text-[10vw] 2xl:space-y-16 font-bold  uppercase text-accent-300">
         <div className="title 2xl:py-16">
-          {/* Learn more about useRef */}
           <h1 ref={(el) => (titles.current[0] = el)} className="translate-y-96 overflow-visible">
             Hey, I'm Nikunj
           </h1>

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import profileImg from "/src/assets/images/Profile.jpeg";
+import profileImg from "/src/assets/images/profile.webp";
 import { ScrollTrigger } from "gsap/all";
 import { gsap } from "gsap";
 import Heading from "../ui/Heading";
@@ -13,7 +13,8 @@ export default function About() {
   useEffect(() => {
     ScrollTrigger.create({
       trigger: aboutSection.current,
-      start: "top 400px",
+      start: "top 20%",
+      // markers: true,
       animation: gsap
         .timeline()
         .to(
@@ -44,7 +45,7 @@ export default function About() {
             src={profileImg}
             width="600"
             height="800"
-            alt="portrait image of Huy standing in front of a tree and foliage"
+            alt="portrait image of Nikunj standing at Nandi Hills, Bangalore"
           />
         </div>
         <div className="top-20 sm:sticky md:top-28 lg:top-32 md:w-1/2">

@@ -3,17 +3,22 @@ import Heading from "../ui/Heading";
 
 export default function Services() {
   const expertiseItems = [
-    "Web Development",
+    "Full Stack Dev",
     "Web Design",
     "UI/UX Design",
+    "App Development",
   ];
 
   const toolBoxItems = [
+    "ReactJs",
+    "ExpressJs",
     "JavaScript",
-    "HTML",
-    "CSS",
+    "MongoDB",
+    "NodeJs",
+    "HTML/CSS",
     "Figma",
-    "ReactJS",
+    "MediaPipe Hands",
+    "React Native",
   ];
 
   return (

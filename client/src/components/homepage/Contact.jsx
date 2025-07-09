@@ -70,7 +70,7 @@ export default function Contact() {
                   htmlFor="name"
                   className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-body-3 2xl:text-body-2 text-secondary-600 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75"
                 >
-                  Your name
+                  Lewis Hamilton {"("}your name{")"} 
                 </label>
               </div>
               <div className="relative z-0">
@@ -86,7 +86,7 @@ export default function Contact() {
                   htmlFor="email"
                   className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-body-3 2xl:text-body-2 text-secondary-600 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75"
                 >
-                  Your email
+                  lh@44.com {"("}your email{")"} 
                 </label>
               </div>
               <div className="relative z-0 sm:col-span-2">
@@ -102,7 +102,7 @@ export default function Contact() {
                   htmlFor="message"
                   className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-body-3 2xl:text-body-2 text-secondary-600 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75"
                 >
-                  Your message
+                  Still struggling with Ferrari :/ {"("}your message{")"} 
                 </label>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function Contact() {
                 <span className="absolute bottom-0 left-0 h-[0.12em] w-0 rounded-full bg-secondary-600 duration-300 ease-in-out group-hover:w-full"></span>
               </a>
               <a
-                href="https://drive.google.com/file/d/1YMdARoVCrD_vTikqp4ZT76PNWrwMGlpO/view?usp=sharing"
+                href="https://drive.google.com/file/d/1aRhnhQ-G9UOkpJUWGNQApCu05gLXzmmn/view?usp=sharing"
                 className="group relative w-fit cursor-pointer"
                 target="_blank"
                 rel="noreferrer"
@@ -153,7 +153,7 @@ export default function Contact() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Icon icon="mdi:github" color="#666" />
+                <Icon icon="pajamas:github" color="#666" />
                 <div className="relative">
                   <span>Github</span>
                   <span className="absolute bottom-0 left-0 h-[0.10em] w-0 rounded-full bg-secondary-600 duration-300 ease-in-out group-hover:w-full"></span>
@@ -165,9 +165,21 @@ export default function Contact() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Icon icon="mdi:linkedin" color="#666" />
+                <Icon icon="pajamas:linkedin" color="#666" />
                 <div className="relative">
                   <span>LinkedIn</span>
+                  <span className="absolute bottom-0 left-0 h-[0.12em] w-0 rounded-full bg-secondary-600 duration-300 ease-in-out group-hover:w-full"></span>
+                </div>
+              </a>
+              <a
+                href="https://x.com/nikunjmathur08"
+                className="group group flex w-fit items-center space-x-2"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Icon icon="pajamas:twitter" color="#666" />
+                <div className="relative">
+                  <span>X</span>
                   <span className="absolute bottom-0 left-0 h-[0.12em] w-0 rounded-full bg-secondary-600 duration-300 ease-in-out group-hover:w-full"></span>
                 </div>
               </a>
