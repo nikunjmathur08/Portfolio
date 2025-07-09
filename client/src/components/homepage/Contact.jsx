@@ -6,6 +6,7 @@ import Heading from "../ui/Heading";
 
 export default function Contact() {
   const [time, setTime] = useState(new Date().toLocaleTimeString());
+  const [buttonText, setButtonText] = useState("Send Message");
 
   const heading = useRef(null)
   const body = useRef(null)
@@ -28,10 +29,39 @@ export default function Contact() {
   }, [contactSection])
 
   useEffect(() => {
-    setInterval(() => {
+    const timer = setInterval(() => {
       setTime(new Date().toLocaleTimeString());
     }, 1000);
+    return () => clearInterval(timer);
   });
+
+  const sendEmail = async (e) => {
+    e.preventDefault();
+    setButtonText("Sending...");
+
+    const data = {
+      name: e.target.name.value,
+      email: e.target.email.value,
+      message: e.target.message.value,
+    };
+
+    const res = await fetch('http://localhost:4000/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      setButtonText("Message Sent! ^_^");
+      e.target.reset();
+    } else {
+      setButtonText("Failed to send :(");
+    }
+
+    setTimeout(() => {
+      setButtonText("Send Message");
+    }, 6000);
+  };
 
   return (
     <section
@@ -51,7 +81,7 @@ export default function Contact() {
             name="contact"
             action="/contact"
             autoComplete="off"
-            // eslint-disable-next-line react/no-unknown-property
+            onSubmit={sendEmail}
             className="mt-10 font-grotesk"
             method="POST" 
           >
@@ -102,7 +132,7 @@ export default function Contact() {
                   htmlFor="message"
                   className="absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-body-3 2xl:text-body-2 text-secondary-600 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75"
                 >
-                  Still struggling with Ferrari :/ {"("}your message{")"} 
+                  Through goes Hamilton!! {"("}your message{")"}
                 </label>
               </div>
             </div>
@@ -111,9 +141,9 @@ export default function Contact() {
               className="button group mt-10 border duration-200 hover:border-accent-400 hover:bg-transparent"
             >
               <span className="relative">
-                <span className="absolute bottom-2 h-1 w-0 bg-secondary-700 opacity-90 duration-300 ease-out group-hover:w-full"></span>
+                <span className="absolute top-4 h-1 w-0 bg-secondary-700 opacity-90 duration-300 ease-inOut group-hover:w-full"></span>
                 <span className="group-hover:text-accent-400">
-                  Send Message
+                  {buttonText}
                 </span>
               </span>
             </button>

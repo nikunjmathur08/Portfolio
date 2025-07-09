@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import Lenis from "@studio-freight/lenis";
+import Lenis from "lenis";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function NavBar({ sectionRefs }, color) {
+export default function NavBar({ sectionRefs, color }) {
   const navBar = useRef(null);
   const logo = useRef(null);
   const cta = useRef(null);
@@ -106,7 +106,7 @@ export default function NavBar({ sectionRefs }, color) {
           href="#contact"
         >
           <span className="relative w-fit">
-            <span className="absolute bottom-2 h-[0.15em] w-0 bg-secondary-700 opacity-90 duration-300 ease-out group-hover:w-full"></span>
+            <span className="absolute top-4 h-[0.15em] w-0 bg-secondary-700 opacity-90 duration-300 ease-out group-hover:w-full"></span>
             <span>Let's Talk.</span>
           </span>
         </a>
