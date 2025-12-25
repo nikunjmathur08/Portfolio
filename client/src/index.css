@@ -2,15 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer base {
-
-  /* *{
-    border: 1px solid red;
-  } */
-
-  
   ::-moz-selection {
     background: #D1D1C7
   }
@@ -20,13 +12,11 @@
   ::selection {
     background: #D1D1C7
   }
-
   .text-smooth {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  
   @font-face {
     font-family: "CabinetGrotesk-Variable";
     src: url("./assets/fonts/CabinetGrotesk-Variable.ttf") format("truetype");
@@ -34,7 +24,6 @@
     font-display: swap;
     font-style: normal;
   }
-  
   @font-face {
     font-family: "GeneralSans-Variable";
     src: url("./assets/fonts/GeneralSans-Variable.ttf") format("truetype");
@@ -42,8 +31,6 @@
     font-display: swap;
     font-style: normal;
   }
-
-
  @media (min-width: 640px) {
   * {
     cursor: none
@@ -54,18 +41,15 @@
   span {
     @apply font-grotesk;
   }
-
   h1,
   h2,
   h3,
   h4 {
     @apply font-general tracking-headings;
   }
-
   .font-outline-4 {
     -webkit-text-stroke: 5px black;
   }
-
   .font-outline-3 {
     -webkit-text-stroke: 4px #0E0E0C;
   }
@@ -83,12 +67,10 @@
     line-height: clamp(6rem, 16vw, 10rem); /* Set the desired line height */
 
   }
-
   nav a:hover ~ .cursor {
     transform: scale(5);
     opacity: 0;
   }
-
   .section-heading {
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
   }
