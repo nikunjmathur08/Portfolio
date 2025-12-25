@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 
 export default function Cursor() {
@@ -6,31 +7,45 @@ export default function Cursor() {
   const curs = useRef(null);
   const svg = useRef(null);
 
+  const location = useLocation();
+
   useEffect(() => {
-    const images = document.querySelectorAll(".img");
+    const ctx = gsap.context(() => {
+      const images = document.querySelectorAll(".img");
+      const tl = gsap.timeline({ paused: true });
 
-    const tl = gsap.timeline({ paused: true });
+      tl.to(curs.current, { height: "112px", width: "112px", ease: "expo.inout" }).to(
+        svg.current,
+        { opacity: 1, width: "96px", height: "96px" },
+        0
+      );
 
-    tl.to(curs.current, { height: "112px", width:"112px", ease: "expo.inout" }).to(
-      svg.current,
-      { opacity: 1, width: "96px", height:"96px" },
-      0
-    );
-
-    images.forEach((img) => {
-      img.addEventListener("mouseenter", function () {
-        tl.play();
-      });
-
-      img.addEventListener("mouseleave", function () {
+      const handleMouseEnter = () => tl.play();
+      const handleMouseLeave = () => {
         tl.reverse();
         tl.eventCallback("onReverseComplete", function () {
           gsap.set(svg.current, { opacity: 0 });
-          gsap.set(curs.current, { height: "12px", width:"12px" });
+          gsap.set(curs.current, { height: "12px", width: "12px" });
         });
+      };
+
+      images.forEach((img) => {
+        img.addEventListener("mouseenter", handleMouseEnter);
+        img.addEventListener("mouseleave", handleMouseLeave);
       });
+
+      return () => {
+        images.forEach((img) => {
+          img.removeEventListener("mouseenter", handleMouseEnter);
+          img.removeEventListener("mouseleave", handleMouseLeave);
+        });
+      };
     });
 
+    return () => ctx.revert();
+  }, [location]);
+
+  useEffect(() => {
     function moveCursor(e) {
       setCursor({ x: e.clientX, y: e.clientY });
     }

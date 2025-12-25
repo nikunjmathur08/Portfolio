@@ -1,10 +1,7 @@
 export default function Projects({ name, img, alt, type, link, year, tools }) {
   return (
     <div>
-      <a
-        target="_blank"
-        rel="noreferrer"
-        href={link}
+      <div
         className="img group inline-block overflow-hidden duration-200 ease-linear hover:rounded-3xl"
       >
         <img
@@ -14,7 +11,7 @@ export default function Projects({ name, img, alt, type, link, year, tools }) {
           width="800"
           height="600"
         />
-      </a>
+      </div>
       <div className="mt-4">
         <div className="flex space-x-2 mb-3">
             <p className="rounded-full bg-transparent border border-secondary-600 flex justify-center items-center px-4 py-1 text-secondary-600 text-body-4 2xl:text-3xl">{year}</p>

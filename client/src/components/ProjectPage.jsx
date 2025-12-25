@@ -129,7 +129,7 @@ const ChallengeCard = ({ challenge }) => (
 // Step/Flow Item
 const FlowStep = ({ step, index }) => (
   <div className="flex items-center gap-4 p-4 bg-secondary-400/5 border border-secondary-400/10 rounded-xl hover:border-secondary-300/40 hover:scale-[1.01] transition-all">
-    <div className="w-8 h-8 flex items-center justify-center rounded-full text-5xl font-semibold text-secondary-400/5 flex-shrink-0" style={{ "-webkit-text-stroke": '1px #a4a49eff' }}>
+    <div className="w-8 h-8 flex items-center justify-center rounded-full text-5xl font-semibold text-secondary-400/5 flex-shrink-0" style={{ WebkitTextStroke: '1px #a4a49eff' }}>
       {index + 1}
     </div>
     <div className="flex flex-col gap-1">
@@ -163,7 +163,7 @@ const ImageGallery = ({ images, title = "Project Gallery" }) => {
             <button
               key={i}
               onClick={() => setSelectedImage(img)}
-              className="group relative overflow-hidden rounded-xl border border-secondary-400/10 hover:border-indigo-500/30 transition-all cursor-pointer aspect-video"
+              className="img group relative overflow-hidden rounded-xl border border-secondary-400/10 hover:border-indigo-500/30 transition-all cursor-pointer aspect-video"
             >
               <img
                 src={img.src}
@@ -298,7 +298,7 @@ export default function ProjectPage() {
         {/* Hero Image with scale animation */}
         <AnimatedSection delay={100}>
           <div className="max-w-6xl mx-auto px-8">
-            <figure className="overflow-hidden rounded-2xl border border-secondary-400/20 hover:scale-[1.01] transition-transform duration-500">
+            <figure className="img overflow-hidden rounded-2xl border border-secondary-400/20 hover:scale-[1.01] transition-transform duration-500">
               <img
                 src={project.image}
                 alt={project.name}

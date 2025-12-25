@@ -3,6 +3,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import Lenis from "lenis";
 
 import NavBar from "./components/ui/NavBar";
 import Hero from "./components/homepage/Hero";
@@ -14,35 +15,39 @@ import Contact from "./components/homepage/Contact";
 import Footer from "./components/ui/Footer";
 import ProjectPage from "./components/ProjectPage";
 import { siteConfig } from "./data";
+gsap.registerPlugin(ScrollTrigger);
 
 // Homepage component
 const HomePage = () => {
-  gsap.registerPlugin(ScrollTrigger);
 
   const sectionRefs = useRef([]);
 
   useEffect(() => {
-    const sectionHeadings = document.querySelectorAll(".section-heading");
-    sectionHeadings.forEach((heading) => {
-      const headings = heading.querySelectorAll(".heading");
+    const ctx = gsap.context(() => {
+      const sectionHeadings = document.querySelectorAll(".section-heading");
+      sectionHeadings.forEach((heading) => {
+        const headings = heading.querySelectorAll(".heading");
 
-      headings.forEach((individualHeading) => {
-        ScrollTrigger.create({
-          trigger: heading,
-          start: "top 550px",
-          // markers: true,
-          end: "bottom 550px",
-          animation: gsap.to(individualHeading, {
-            opacity: 1,
-            y: 0,
-            ease: "power4.out",
-            duration: 1,
-          }),
-          toggleActions: "play none none none",
+        headings.forEach((individualHeading) => {
+          ScrollTrigger.create({
+            trigger: heading,
+            start: "top 550px",
+            // markers: true,
+            end: "bottom 550px",
+            animation: gsap.to(individualHeading, {
+              opacity: 1,
+              y: 0,
+              ease: "power4.out",
+              duration: 1,
+            }),
+            toggleActions: "play none none none",
+          });
         });
-        ScrollTrigger.refresh();
       });
+      ScrollTrigger.refresh();
     });
+
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -72,10 +77,33 @@ const HomePage = () => {
 const App = () => {
   const location = useLocation();
 
-  // Scroll to top on route change
+  // Initialize Lenis globally
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
+    const lenis = new Lenis();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    lenis.on("scroll", ScrollTrigger.update);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  // Handle scroll to top or hash on route change
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.pathname, location.hash]);
 
   return (
     <Routes>

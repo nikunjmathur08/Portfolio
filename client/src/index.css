@@ -33,9 +33,13 @@
   }
  @media (min-width: 640px) {
   * {
-    cursor: none
+    cursor: none;
   }
 }
+  body {
+    background-color: #0E0E0C;
+    overflow-x: hidden;
+  }
   a,
   p,
   span {

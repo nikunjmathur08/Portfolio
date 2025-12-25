@@ -10,45 +10,43 @@ export default function Hero() {
   const scroll = useRef(null)
 
   useEffect(() => {
-    const ScrollTl = gsap.timeline({ repeat: -1 });
-    ScrollTl.fromTo(
-      scrollLine.current,
-      { translateX: -40 },
-      { translateX: 40, duration: 1.5, ease: "power4.inOut" }
-    );
+    const ctx = gsap.context(() => {
+      const ScrollTl = gsap.timeline({ repeat: -1 });
+      ScrollTl.fromTo(
+        scrollLine.current,
+        { translateX: -40 },
+        { translateX: 40, duration: 1.5, ease: "power4.inOut" }
+      );
 
-    const mainTl = gsap.timeline();
+      const mainTl = gsap.timeline();
 
-    gsap.set(imgContainer.current, { scale: 0.9 });
-    gsap.set(img.current, { scale: 1.5 });
+      gsap.set(imgContainer.current, { scale: 0.9 });
+      gsap.set(img.current, { scale: 1.5 });
 
-    mainTl.to(imgContainer.current, {
-      scale: 1,
-      duration: 3.25,
-      ease: "power3.inOut"
-    })
-    .to(
-      img.current,
-      { scale: 1, duration: 3.2, ease: "power4.inOut" },
-      "-=3.1"
-    )
-    .to(
-      titles.current,
-      { y: 0, duration: 2, ease: "power4.inOut" },
-      "-=2.5"
-    )
-    .fromTo(
-      scroll.current,
-      { opacity: 0 },
-      { opacity: 1, duration: 1, ease: "out" },
-      "-=2"
-    );
+      mainTl.to(imgContainer.current, {
+        scale: 1,
+        duration: 3.25,
+        ease: "power3.inOut"
+      })
+      .to(
+        img.current,
+        { scale: 1, duration: 3.2, ease: "power4.inOut" },
+        "-=3.1"
+      )
+      .to(
+        titles.current,
+        { y: 0, duration: 2, ease: "power4.inOut" },
+        "-=2.5"
+      )
+      .fromTo(
+        scroll.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 1, ease: "out" },
+        "-=2"
+      );
+    });
 
-    return () => {
-      ScrollTl.kill();
-      mainTl.kill();
-      gsap.set([imgContainer.current, img.current], { clearProps: "all" });
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
