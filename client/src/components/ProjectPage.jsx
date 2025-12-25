@@ -304,6 +304,7 @@ export default function ProjectPage() {
                 alt={project.name}
                 className="w-full h-auto object-cover"
                 loading="eager"
+                fetchPriority="high"
               />
             </figure>
           </div>

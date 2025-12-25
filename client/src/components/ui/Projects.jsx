@@ -1,4 +1,4 @@
-export default function Projects({ name, img, alt, type, link, year, tools }) {
+export default function Projects({ name, img, alt, type, link, year, tools, priority = false }) {
   return (
     <div>
       <div
@@ -10,6 +10,8 @@ export default function Projects({ name, img, alt, type, link, year, tools }) {
           alt={alt}
           width="800"
           height="600"
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
         />
       </div>
       <div className="mt-4">

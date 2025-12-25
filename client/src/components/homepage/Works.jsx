@@ -25,6 +25,7 @@ export default function Works({ forwardedRef }) {
                 type={projects[0].type}
                 year={projects[0].year}
                 tools={projects[0].tools.join(" • ")}
+                priority={true}
               />
             </Link>
           </div>
