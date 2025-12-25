@@ -9,12 +9,18 @@ const app = express()
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/test', (req, res) => {
   res.status(200).json({ message: "Test route working fine!" });
+  console.log("Mail User: ", process.env.MAIL_USER);
+  console.log("Mail Pass: ", process.env.MAIL_PASS);
 })
 
 app.post('/send', async (req, res) => {
+  if (!req.body) {
+    return res.status(400).json({ error: 'Body is missing. Ensure you are sending JSON or URL-encoded data.' });
+  }
   const { name, email, message } = req.body;
 
   if (!name || !email || !message) {

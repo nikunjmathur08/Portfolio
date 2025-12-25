@@ -1,7 +1,8 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef } from "react";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";Z
+import { Routes, Route, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 import NavBar from "./components/ui/NavBar";
 import Hero from "./components/homepage/Hero";
@@ -11,15 +12,16 @@ import Services from "./components/homepage/Services";
 import Works from "./components/homepage/Works";
 import Contact from "./components/homepage/Contact";
 import Footer from "./components/ui/Footer";
+import ProjectPage from "./components/ProjectPage";
+import { siteConfig } from "./data";
 
-const App = () => {
- 
+// Homepage component
+const HomePage = () => {
   gsap.registerPlugin(ScrollTrigger);
 
   const sectionRefs = useRef([]);
 
   useEffect(() => {
-
     const sectionHeadings = document.querySelectorAll(".section-heading");
     sectionHeadings.forEach((heading) => {
       const headings = heading.querySelectorAll(".heading");
@@ -37,28 +39,49 @@ const App = () => {
             duration: 1,
           }),
           toggleActions: "play none none none",
-
         });
-        ScrollTrigger.refresh()
+        ScrollTrigger.refresh();
       });
     });
   }, []);
 
-  
+  return (
+    <>
+      <Helmet>
+        <title>{siteConfig.title}</title>
+        <meta name="description" content={siteConfig.description} />
+        <link rel="canonical" href={siteConfig.url} />
+      </Helmet>
+      <div className="bg-secondary-100">
+        <NavBar sectionRefs={sectionRefs.current} />
+        <Hero />
+        <main className="px-5 md:px-10 xl:px-20 2xl:px-28">
+          <Role forwardedRef={(el) => (sectionRefs.current[0] = el)} />
+          <About />
+          <Services />
+          <Works forwardedRef={(el) => (sectionRefs.current[1] = el)} />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+};
+
+// Main App with routing
+const App = () => {
+  const location = useLocation();
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
-    <div className="bg-secondary-100">
-      <NavBar sectionRefs={sectionRefs.current} />{" "}
-      <Hero />
-      <main className="px-5 md:px-10 xl:px-20 2xl:px-28">
-        <Role forwardedRef={(el) => (sectionRefs.current[0] = el)} />{" "}
-        <About />
-        <Services />
-        <Works forwardedRef={(el) => (sectionRefs.current[1] = el)} />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/projects/:slug" element={<ProjectPage />} />
+    </Routes>
   );
 };
 

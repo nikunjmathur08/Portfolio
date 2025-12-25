@@ -40,23 +40,27 @@ export default function Contact() {
     e.preventDefault();
     setButtonText("Sending...");
 
-    const data = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      message: e.target.message.value,
-    };
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
 
-    const res = await fetch(`${apiURL}/send`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
+    try {
+      const res = await fetch(`${apiURL}/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-    if (res.ok) {
-      setButtonText("Message Sent! ^_^");
-      e.target.reset();
-    } else {
-      setButtonText("Failed to send :(");
+      if (res.ok) {
+        setButtonText("Message Sent! ^_^");
+        e.target.reset();
+      } else {
+        const errorData = await res.json();
+        console.error("Server Error:", errorData);
+        setButtonText("Failed to send :(");
+      }
+    } catch (err) {
+      console.error("Network Error:", err);
+      setButtonText("Network Error :(");
     }
 
     setTimeout(() => {
