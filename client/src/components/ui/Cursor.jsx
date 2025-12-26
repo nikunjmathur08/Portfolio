@@ -11,39 +11,67 @@ export default function Cursor() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const images = document.querySelectorAll(".img");
-      const tl = gsap.timeline({ paused: true });
-
-      tl.to(curs.current, { height: "112px", width: "112px", ease: "expo.inout" }).to(
-        svg.current,
-        { opacity: 1, width: "96px", height: "96px" },
-        0
-      );
-
-      const handleMouseEnter = () => tl.play();
-      const handleMouseLeave = () => {
-        tl.reverse();
-        tl.eventCallback("onReverseComplete", function () {
-          gsap.set(svg.current, { opacity: 0 });
-          gsap.set(curs.current, { height: "12px", width: "12px" });
-        });
+      const handleMouseOver = (e) => {
+        const target = e.target.closest(".img");
+        if (target) {
+          // Emulate mouseenter: only play if coming from outside the target
+          if (!e.relatedTarget || !target.contains(e.relatedTarget)) {
+            const size = target.dataset.cursorSize || "112px";
+            
+            gsap.to(curs.current, {
+              height: size,
+              width: size,
+              duration: 0.5,
+              ease: "expo.out",
+              overwrite: "auto",
+            });
+            
+            gsap.to(svg.current, {
+              opacity: 1,
+              width: "96px",
+              height: "96px",
+              duration: 0.5,
+              ease: "expo.out",
+              overwrite: "auto",
+            });
+          }
+        }
       };
 
-      images.forEach((img) => {
-        img.addEventListener("mouseenter", handleMouseEnter);
-        img.addEventListener("mouseleave", handleMouseLeave);
-      });
+      const handleMouseOut = (e) => {
+        const target = e.target.closest(".img");
+        if (target) {
+          // Emulate mouseleave: only reverse if going outside the target
+          if (!e.relatedTarget || !target.contains(e.relatedTarget)) {
+            gsap.to(curs.current, {
+              height: "12px",
+              width: "12px",
+              duration: 0.5,
+              ease: "expo.out",
+              overwrite: "auto",
+            });
+            
+            gsap.to(svg.current, {
+              opacity: 0,
+              duration: 0.5,
+              ease: "expo.out",
+              overwrite: "auto",
+            });
+          }
+        }
+      };
+
+      document.addEventListener("mouseover", handleMouseOver);
+      document.addEventListener("mouseout", handleMouseOut);
 
       return () => {
-        images.forEach((img) => {
-          img.removeEventListener("mouseenter", handleMouseEnter);
-          img.removeEventListener("mouseleave", handleMouseLeave);
-        });
+        document.removeEventListener("mouseover", handleMouseOver);
+        document.removeEventListener("mouseout", handleMouseOut);
       };
     });
 
     return () => ctx.revert();
-  }, [location]);
+  }, []);
 
   useEffect(() => {
     function moveCursor(e) {

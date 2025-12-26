@@ -53,7 +53,6 @@ const AnimatedSection = ({ children, delay = 0 }) => {
   );
 };
 
-// Section Component for consistent styling
 const Section = ({ title, children, className = "", delay = 0 }) => {
   const { ref, isVisible } = useScrollAnimation();
   
@@ -75,8 +74,7 @@ const Section = ({ title, children, className = "", delay = 0 }) => {
   );
 };
 
-// List with icons
-const IconList = ({ items, negative = false }) => (
+const IconList = ({ items }) => (
   <ul className="list-none px-4 m-0 mb-2">
     {items.map((item, i) => (
       <li key={i} className="relative pl-3 mb-2 text-md text-secondary-300 before:content-['-'] before:absolute before:left-0 before:text-secondary-400 before:font-bold">
@@ -86,7 +84,6 @@ const IconList = ({ items, negative = false }) => (
   </ul>
 );
 
-// Quote/Insight Block
 const InsightBlock = ({ children }) => (
   <blockquote className="flex gap-4 p-6 bg-gradient-to-r from-amber-500/10 to-amber-600/5 border-l-4 border-amber-400 rounded-r-xl my-6">
     <Icon icon="mdi:lightbulb-outline" className="text-2xl text-amber-400 flex-shrink-0" />
@@ -94,7 +91,6 @@ const InsightBlock = ({ children }) => (
   </blockquote>
 );
 
-// Tech Stack Pills
 const TechPill = ({ label, value }) => (
   <div className="bg-secondary-400/5 border border-secondary-400/20 rounded-xl p-5 flex flex-col gap-2 transition-colors">
     <span className="text-xs text-secondary-500 uppercase tracking-widest font-grotesk">{label}</span>
@@ -102,7 +98,6 @@ const TechPill = ({ label, value }) => (
   </div>
 );
 
-// Decision Card
 const DecisionCard = ({ decision }) => (
   <div className="bg-secondary-400/5 border border-secondary-400/5 rounded-xl p-6 hover:border-secondary-300/40 hover:scale-[1.01] transition-all">
     <h4 className="text-xl font-semibold text-white mb-4 font-general">{decision.title}</h4>
@@ -115,7 +110,6 @@ const DecisionCard = ({ decision }) => (
   </div>
 );
 
-// Challenge Card
 const ChallengeCard = ({ challenge }) => (
   <div className="bg-secondary-400/5 border border-secondary-400/10 rounded-xl p-6 border-l-4 border-l-red-400">
     <h4 className="text-xl font-semibold text-white mb-3 font-general">{challenge.title}</h4>
@@ -126,7 +120,6 @@ const ChallengeCard = ({ challenge }) => (
   </div>
 );
 
-// Step/Flow Item
 const FlowStep = ({ step, index }) => (
   <div className="flex items-center gap-4 p-4 bg-secondary-400/5 border border-secondary-400/10 rounded-xl hover:border-secondary-300/40 hover:scale-[1.01] transition-all">
     <div className="w-8 h-8 flex items-center justify-center rounded-full text-5xl font-semibold text-secondary-400/5 flex-shrink-0" style={{ WebkitTextStroke: '1px #a4a49eff' }}>
@@ -139,7 +132,6 @@ const FlowStep = ({ step, index }) => (
   </div>
 );
 
-// Image Gallery with Lightbox
 const ImageGallery = ({ images, title = "Project Gallery" }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { ref, isVisible } = useScrollAnimation();
@@ -219,11 +211,6 @@ export default function ProjectPage() {
   const { slug } = useParams();
   const project = projects.find((p) => p.slug === slug);
 
-  // Scroll to top on mount
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [slug]);
-
   if (!project) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center bg-secondary-100 px-5">
@@ -270,7 +257,20 @@ export default function ProjectPage() {
             <Icon icon="mdi:arrow-left" />
             <span>Back to Home</span>
           </Link>
-          <span className="text-sm text-secondary-400 font-grotesk">{project.year}</span>
+          <div className="flex items-center gap-8">
+            {(project.liveUrl || project.sourceUrl || project.link) && (
+              <Link 
+                to={project.liveUrl || project.sourceUrl || project.link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                data-cursor-size="50px"
+                className="img text-sm font-medium text-secondary-300 px-4 py-2 border border-secondary-400/20 rounded-full bg-accent-400/90 hover:bg-secondary-100 hover:text-accent-400 transition-all ease-in-out duration-500"
+              >
+                {project.liveUrl ? 'Live Demo' : 'GitHub Repo'}
+              </Link>
+            )}
+            <span className="text-sm text-secondary-400 font-grotesk">{project.year}</span>
+          </div>
         </nav>
 
         {/* Hero Section with entrance animation */}
@@ -404,7 +404,7 @@ export default function ProjectPage() {
 
           {/* Key Technical Decisions */}
           {project.technicalDecisions && (
-            <Section title="Key Technical Decisions" icon="⚙️" delay={50}>
+            <Section title="Key Technical Decisions" delay={50}>
               <div className="grid gap-6">
                 {project.technicalDecisions.map((decision, i) => (
                   <DecisionCard key={i} decision={decision} />
@@ -415,7 +415,7 @@ export default function ProjectPage() {
 
           {/* Pipeline Overheads (Smart Extractor specific) */}
           {project.pipelineOverheads && (
-            <Section title={project.pipelineOverheads.title} icon="📊" delay={50}>
+            <Section title={project.pipelineOverheads.title} delay={50}>
               <p className="mb-6 text-base">{project.pipelineOverheads.intro}</p>
               <IconList items={project.pipelineOverheads.points} />
               <InsightBlock>{project.pipelineOverheads.insight}</InsightBlock>
@@ -424,7 +424,7 @@ export default function ProjectPage() {
 
           {/* Tech Stack */}
           {project.techStack && (
-            <Section title="Tech Stack" icon="🛠️" delay={50}>
+            <Section title="Tech Stack" delay={50}>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {project.techStack.map((item, i) => (
                   <TechPill key={i} label={item.label} value={item.value} />
@@ -440,7 +440,7 @@ export default function ProjectPage() {
 
           {/* Challenges & Iterations */}
           {project.challenges && (
-            <Section title="Challenges & Iterations" icon="🔧" delay={50}>
+            <Section title="Challenges & Iterations" delay={50}>
               <div className="grid gap-6">
                 {project.challenges.map((challenge, i) => (
                   <ChallengeCard key={i} challenge={challenge} />
@@ -451,36 +451,36 @@ export default function ProjectPage() {
 
           {/* Observations */}
           {project.observations && (
-            <Section title="Observations" icon="👁️" delay={50}>
-              <IconList items={project.observations} icon="mdi:chart-line" />
+            <Section title="Observations" delay={50}>
+              <IconList items={project.observations}/>
             </Section>
           )}
 
           {/* Security & Ethics */}
           {project.ethics && (
-            <Section title="Security & Responsibility" icon="🔒" delay={50}>
-              <IconList items={project.ethics} icon="mdi:shield-check" />
+            <Section title="Security & Responsibility" delay={50}>
+              <IconList items={project.ethics}/>
             </Section>
           )}
 
           {/* Key Learnings */}
           {project.learnings && (
-            <Section title="Key Learnings" icon="💡" delay={50}>
-              <IconList items={project.learnings} icon="mdi:school" />
+            <Section title="Key Learnings" delay={50}>
+              <IconList items={project.learnings}/>
             </Section>
           )}
 
           {/* Future Work */}
           {project.futureWork && (
-            <Section title="Future Roadmap" icon="🚀" delay={50}>
-              <IconList items={project.futureWork} icon="mdi:arrow-right-circle" />
+            <Section title="Future Roadmap" delay={50}>
+              <IconList items={project.futureWork}/>
             </Section>
           )}
 
           {/* What You Can Learn */}
           {project.whatYouCanLearn && (
-            <Section title="What You Can Learn From This Project" icon="📚" delay={50}>
-              <IconList items={project.whatYouCanLearn} icon="mdi:book-open-page-variant" />
+            <Section title="What You Can Learn From This Project" delay={50}>
+              <IconList items={project.whatYouCanLearn}/>
             </Section>
           )}
 

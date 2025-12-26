@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useLayoutEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Lenis from "lenis";
@@ -76,10 +76,12 @@ const HomePage = () => {
 // Main App with routing
 const App = () => {
   const location = useLocation();
+  const lenisRef = useRef(null);
 
   // Initialize Lenis globally
   useEffect(() => {
     const lenis = new Lenis();
+    lenisRef.current = lenis;
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -90,18 +92,32 @@ const App = () => {
 
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
   // Handle scroll to top or hash on route change
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
     if (location.hash) {
       const el = document.querySelector(location.hash);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth" });
+        if (lenisRef.current) {
+          lenisRef.current.scrollTo(el, { immediate: true });
+        } else {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
       }
     } else {
       window.scrollTo(0, 0);
+      document.body.scrollTo(0, 0);
+      
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      }
     }
   }, [location.pathname, location.hash]);
 
