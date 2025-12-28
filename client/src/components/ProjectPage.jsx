@@ -252,24 +252,24 @@ export default function ProjectPage() {
 
       <div className="min-h-screen bg-accent-400 text-secondary-400 pb-16">
         {/* Navigation */}
-        <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-8 py-4 bg-accent-400/90 backdrop-blur-xl border-b border-white/10">
-          <Link to="/" className="flex items-center gap-2 text-secondary-300 text-sm hover:text-white transition-colors">
-            <Icon icon="mdi:arrow-left" />
-            <span>Back to Home</span>
+        <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-4 md:px-8 py-2 bg-accent-400/90 backdrop-blur-xl border-b border-white/10">
+          <Link to="/" className="flex items-center gap-2 text-secondary-300 text-sm hover:text-white transition-colors min-h-[44px] min-w-[44px] px-2">
+            <Icon icon="mdi:arrow-left" className="text-lg" />
+            <span className="hidden sm:inline">Back to Home</span>
           </Link>
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-4 md:gap-8">
             {(project.liveUrl || project.sourceUrl || project.link) && (
               <Link 
                 to={project.liveUrl || project.sourceUrl || project.link} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 data-cursor-size="50px"
-                className="img text-sm font-medium text-secondary-300 px-4 py-2 border border-secondary-400/20 rounded-full bg-accent-400/90 hover:bg-secondary-100 hover:text-accent-400 transition-all ease-in-out duration-500"
+                className="img text-sm font-medium text-secondary-300 px-4 py-2.5 min-h-[44px] flex items-center border border-secondary-400/20 rounded-full bg-accent-400/90 hover:bg-secondary-100 hover:text-accent-400 transition-all ease-in-out duration-500"
               >
-                {project.liveUrl ? 'Live Demo' : 'GitHub Repo'}
+                {project.liveUrl ? 'Live Demo' : 'GitHub'}
               </Link>
             )}
-            <span className="text-sm text-secondary-400 font-grotesk">{project.year}</span>
+            <span className="text-sm text-secondary-400 font-grotesk hidden sm:block">{project.year}</span>
           </div>
         </nav>
 
@@ -570,7 +570,7 @@ export default function ProjectPage() {
 
         {/* Footer */}
         <footer className="text-center py-8 border-t border-secondary-400/10">
-          <Link to="/" className="inline-flex items-center gap-2 text-secondary-500 text-sm hover:text-white transition-colors">
+          <Link to="/" className="inline-flex items-center gap-2 text-secondary-500 text-sm hover:text-white transition-colors min-h-[44px] px-4 py-2">
             <Icon icon="mdi:arrow-left" />
             Back to all projects
           </Link>
