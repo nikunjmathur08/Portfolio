@@ -503,7 +503,8 @@ export default function ProjectPage() {
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-base bg-gradient-to-r from-indigo-500 to-purple-500 text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/30 transition-all"
+                data-cursor-size="70px"
+                className="img inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-base bg-transparent text-secondary-400 border border-secondary-400/30 hover:bg-secondary-400 hover:text-accent-400 hover:border-secondary-400/80 transition-all"
               >
                 <Icon icon="mdi:open-in-new" />
                 <span>View Live Demo</span>
@@ -514,7 +515,8 @@ export default function ProjectPage() {
                 href={project.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-base bg-transparent text-secondary-400 border border-secondary-400/30 hover:bg-secondary-400/10 hover:border-secondary-400/50 transition-all"
+                data-cursor-size="70px"
+                className="img inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium text-base bg-transparent text-secondary-400 border border-secondary-400/30 hover:bg-secondary-400 hover:text-accent-400 hover:border-secondary-400/80 transition-all"
               >
                 <Icon icon="mdi:github" />
                 <span>View Source Code</span>
