@@ -6,8 +6,8 @@ import circuitsImg from "./assets/images/circuits.webp";
 
 export const siteConfig = {
   name: "Nikunj Mathur",
-  title: "Nikunj Mathur — Frontend Developer & Designer",
-  description: "Frontend developer and designer based in New Delhi, India. Specializing in React, React Native, and creating digital experiences that inspire and connect.",
+  title: "Nikunj Mathur - Frontend Developer & Designer",
+  description: "Frontend developer and designer based in New Delhi, India. Specializing in React, React Native and creating digital experiences that inspire and connect.",
   url: "https://nikunjmathur.vercel.app",
   email: "nikunjmathur0810@gmail.com",
   social: {
@@ -138,7 +138,8 @@ export const projects = [
       "Pre-processing and problem framing often matter more than model complexity",
       "UX mechanics can amplify or destroy the effectiveness of ML systems",
       "Accessibility must be designed in, not added later",
-      "Real-time systems expose performance issues early and brutally"
+      "Real-time systems expose performance issues early and brutally",
+      "Pre-emptively loading the model can pay off dividends in app experience"
     ],
     futureWork: [
       "Expand gesture vocabulary using transfer learning",
@@ -151,18 +152,18 @@ export const projects = [
       "How to run real-time ML inference on mobile devices",
       "How to reduce vision problems to geometric representations",
       "How to design effective feedback loops for skill learning",
-      "How to balance ML accuracy, latency, and UX",
+      "How to balance ML accuracy, latency and UX",
       "How to build accessibility-first products with AI"
     ],
-    finalNote: "Signie is not just a mobile app — it's an exploration of how AI, UX, and accessibility intersect. The project demonstrates how thoughtful engineering decisions can turn complex ML systems into human-centered learning tools."
+    finalNote: "Signie is not just a mobile app, it's an exploration of how AI, UX and accessibility intersect. The project demonstrates how thoughtful engineering decisions can turn complex ML systems into human-centered learning tools."
   },
   
   {
     slug: "not-risk",
-    name: "(not)-RISK — Receipts, Insurance & Services Keeper",
+    name: "(not)-RISK - Receipts, Insurance & Services Keeper",
     shortName: "(not)-RISK",
     tagline: "Never lose another receipt. Never miss a warranty.",
-    description: "A SaaS platform for managing receipts, insurance documents, and service records. Built with the MERN stack for seamless document organization and retrieval.",
+    description: "A SaaS platform for managing receipts, insurance documents and service records. Built with the MERN stack for seamless document organization and retrieval.",
     type: "SaaS • Full Stack Development",
     year: "2025",
     tools: ["MongoDB", "Express", "React", "TailwindCSS", "Node.js"],
@@ -176,21 +177,21 @@ export const projects = [
     team: "Solo",
     platform: "Web (SaaS)",
     tldr: {
-      what: "A SaaS platform to store, organize, and track receipts, warranties, and insurance documents",
+      what: "A SaaS platform to store, organize and track receipts, warranties and insurance documents",
       who: "Individuals who lose money and time due to poor document management",
-      challenge: "Making long-term document storage reliable, searchable, and actionable",
-      outcome: "Functional MVP with secure storage, search, and reminder workflows",
+      challenge: "Making long-term document storage reliable, searchable and actionable",
+      outcome: "Functional MVP with secure storage, search and reminder workflows",
       whyItMatters: "Documents only have value if they remain accessible when they're needed most"
     },
     problem: {
-      intro: "Receipts, warranties, and insurance documents are time-sensitive assets, yet most people treat them as disposable clutter.",
+      intro: "Receipts, warranties and insurance documents are time-sensitive assets, yet most people treat them as disposable clutter.",
       points: [
         "Thermal receipts fade within months",
-        "Digital copies are scattered across email, messaging apps, and cloud drives",
+        "Digital copies are scattered across email, messaging apps and cloud drives",
         "Warranty deadlines are missed due to forgetfulness",
         "During claims, locating the right document becomes stressful and time-consuming"
       ],
-      coreInsight: "The real issue isn't storage — it's reliability over time. A receipt you can't find when it matters is functionally useless. (not)-RISK exists to fix that gap."
+      coreInsight: "The real issue isn't storage - it's reliability over time. A receipt you can't find when it matters is functionally useless. (not)-RISK exists to fix that gap."
     },
     nonGoals: [
       "Replace enterprise document management systems",
@@ -213,10 +214,10 @@ export const projects = [
       {
         title: "Flexible Storage Over Rigid Schemas",
         points: [
-          "Receipts vary wildly in structure, length, and metadata",
+          "Receipts vary wildly in structure, length and metadata",
           "MongoDB was chosen for schema flexibility over strict normalization"
         ],
-        outcome: "Trade-off: More logic handled at the application layer — acceptable for this stage"
+        outcome: "Trade-off: More logic handled at the application layer - acceptable for this stage"
       },
       {
         title: "JWT-Based Authentication",
@@ -229,7 +230,7 @@ export const projects = [
       {
         title: "Reminder System as a Core Feature",
         points: [
-          "Warranty reminders weren't an afterthought — they were foundational",
+          "Warranty reminders weren't an afterthought - they were foundational",
           "Background jobs scheduled based on document metadata with user-configurable windows"
         ],
         outcome: "Insight: Preventing loss is more valuable than helping users recover after loss"
@@ -275,7 +276,7 @@ export const projects = [
       "Designing for long-term data usability is harder than initial storage",
       "Search beats hierarchy for real-world document retrieval",
       "SaaS products live on repeat engagement, not first-time usage",
-      "UX friction compounds over time — small issues become big problems"
+      "UX friction compounds over time - small issues become big problems"
     ],
     futureWork: [
       "OCR-based metadata extraction",
@@ -290,15 +291,15 @@ export const projects = [
       "How reminder systems drive retention",
       "How to iterate responsibly on a live product"
     ],
-    finalNote: "(not)-RISK is not a finished product — and that's intentional. It's an evolving system focused on protecting value over time, built with real constraints, real users, and real trade-offs. This project reflects product ownership, not just feature delivery."
+    finalNote: "(not)-RISK is a work in progress and that's intentional. It's an evolving system focused on providing value, one receipt at a time."
   },
   
   {
     slug: "evinco",
-    name: "Evinco — Event • Interact • Connect",
+    name: "Evinco - Event • Interact • Connect",
     shortName: "Evinco",
     tagline: "Where events come alive and connections are made",
-    description: "A full-stack event management platform that enables users to create, discover, and interact with events. Features real-time updates and social connectivity.",
+    description: "A full-stack event management platform that enables users to create, discover and interact with events. Features real-time updates and social connectivity.",
     type: "Web Design • Full Stack Development",
     year: "2024",
     tools: ["MongoDB", "Express", "React", "Node.js", "Socket.io"],
@@ -315,7 +316,7 @@ export const projects = [
       who: "Event attendees and small organizers looking for meaningful engagement",
       challenge: "Turning events from one-off transactions into ongoing social experiences",
       outcome: "Fully functional multi-user platform with real-time interaction",
-      whyItMatters: "Events shouldn't end when the venue closes — connections should persist"
+      whyItMatters: "Events shouldn't end when the venue closes - connections should persist"
     },    
     problem: {
       intro: "Most event platforms solve logistics, not connection.",
@@ -323,7 +324,7 @@ export const projects = [
         "Event discovery is noisy and irrelevant",
         "Attendees have no way to interact before or after events",
         "Organizers lack lightweight tools tailored for small or niche communities",
-        "Events feel transactional — register, attend, disappear"
+        "Events feel transactional - register, attend, disappear"
       ],
       coreInsight: "Events are treated as isolated objects, not social experiences with a lifecycle. Evinco was built to explore what happens when community is the core primitive, not an afterthought."
     },    
@@ -351,7 +352,7 @@ export const projects = [
           "Chose Socket.io to support live attendee conversations",
           "Pre-event coordination and post-event discussion continuity"
         ],
-        outcome: "Trade-off: More complexity in state synchronization — acceptable given the product goal"
+        outcome: "Trade-off: More complexity in state synchronization - acceptable given the product goal"
       },
       {
         title: "MERN Stack for Team Velocity",
@@ -426,12 +427,12 @@ export const projects = [
       "How social UX choices affect long-term engagement",
       "How to scope ambitious ideas into shippable systems"
     ],
-    finalNote: "Evinco is not just an event platform — it's an experiment in turning events into lasting social experiences. The project reflects collaborative engineering, real-time system design, and product thinking under constraints."
+    finalNote: "Evinco is not just an event platform - it's an experiment in turning events into lasting social experiences. The project reflects collaborative engineering, real-time system design and product thinking under constraints."
   },
   
   {
     slug: "smart-extractor",
-    name: "Smart Extractor — Terminal-Based Dynamic Web Scraper",
+    name: "Smart Extractor - Terminal-Based Dynamic Web Scraper",
     shortName: "Smart Extractor",
     tagline: "Intelligent data extraction powered by local AI",
     description: "A powerful terminal-based web scraping tool that leverages local AI models for intelligent data extraction. Supports dynamic content and provides structured output.",
@@ -449,14 +450,14 @@ export const projects = [
     tldr: {
       what: "A privacy-first CLI tool that extracts structured data from websites using local AI",
       who: "Developers who hate brittle selectors and manual HTML parsing",
-      challenge: "Orchestrating crawling, LLM reasoning, and structured output without cloud services",
+      challenge: "Orchestrating crawling, LLM reasoning and structured output without cloud services",
       outcome: "Fully working prototype with dynamic page support and JSON output",
-      whyItMatters: "Web scraping breaks not because of crawling — but because of structure and change"
+      whyItMatters: "Web scraping breaks not because of crawling - but because of structure and change"
     },
     problem: {
       intro: "Traditional web scraping fails in predictable ways:",
       points: [
-        "Selectors are brittle — a minor DOM change breaks the scraper",
+        "Selectors are brittle - a minor DOM change breaks the scraper",
         "Dynamic sites render content via JavaScript, complicating extraction",
         "Raw HTML is useless without heavy post-processing",
         "AI-powered tools often require sending sensitive data to third-party APIs"
@@ -479,7 +480,7 @@ export const projects = [
         { title: "Schema-guided Extraction", description: "Structured output" },
         { title: "Validated JSON Output", description: "Final result" }
       ],
-      note: "Each stage is explicit — no magic, no hidden calls."
+      note: "Each stage is explicit - no magic, no hidden calls."
     },
     technicalDecisions: [
       {
@@ -489,7 +490,7 @@ export const projects = [
           "No API costs, no rate limits",
           "Full control over model behavior"
         ],
-        outcome: "Trade-off: Higher latency, tighter memory constraints, and orchestration complexity"
+        outcome: "Trade-off: Higher latency, tighter memory constraints and orchestration complexity"
       },
       {
         title: "Model Choice: LLaMA 3.1 8B (Quantized)",
@@ -498,7 +499,7 @@ export const projects = [
           "Capable of schema-aware extraction",
           "Small enough to iterate quickly"
         ],
-        outcome: "Lesson: Local AI is viable — but only if you design around its constraints"
+        outcome: "Lesson: Local AI is viable - but only if you design around its constraints"
       },
       {
         title: "Ollama Modelfiles for Control",
@@ -519,7 +520,7 @@ export const projects = [
     ],
     pipelineOverheads: {
       title: "The Hidden Cost: Pipeline Overheads (The Real Learning)",
-      intro: "The hardest problem wasn't crawling or AI — it was data movement between stages.",
+      intro: "The hardest problem wasn't crawling or AI - it was data movement between stages.",
       points: [
         "Crawled content → LLM prompt construction",
         "Large HTML blocks → tokenized context",
@@ -549,7 +550,7 @@ export const projects = [
       "AI-assisted extraction removes most selector logic",
       "Dynamic sites become easier, not harder",
       "Local inference shifts complexity from cost → engineering",
-      "The terminal is unforgiving — slow systems feel very slow"
+      "The terminal is unforgiving - slow systems feel very slow"
     ],    
     ethics: [
       "No external API calls",
@@ -582,7 +583,7 @@ export const projects = [
   
   {
     slug: "circuit-creations",
-    name: "Circuit Creations — Interactive Digital Logic Design",
+    name: "Circuit Creations - Interactive Digital Logic Design",
     shortName: "Circuit Creations",
     tagline: "Where students build the building blocks of computing",
     description: "An interactive digital logic design platform for SRMIST's DLD department. Enables students to create and simulate digital circuits in the browser.",
@@ -605,7 +606,7 @@ export const projects = [
       whyItMatters: "Students learn circuits best by building and testing, not memorizing symbols"
     },
     problem: {
-      intro: "Digital Logic Design is foundational — and notoriously hard to learn.",
+      intro: "Digital Logic Design is foundational - and notoriously hard to learn.",
       points: [
         "Logic gates and circuits are abstract and unintuitive on paper",
         "Physical lab access is time-limited and capacity-constrained",
@@ -621,7 +622,7 @@ export const projects = [
         "Iterative feedback from students during development",
         "Feature prioritization driven by teaching needs, not market trends"
       ],
-      note: "This was not a generic simulator — it was built for a specific academic context."
+      note: "This was not a generic simulator - it was built for a specific academic context."
     },
     nonGoals: [
       "Compete with professional EDA tools",
@@ -657,7 +658,7 @@ export const projects = [
           "Real-time wire drawing and updates",
           "Clear visual mapping between logic and output"
         ],
-        outcome: "Trade-off: More custom logic — but better learning outcomes"
+        outcome: "Trade-off: More custom logic but better learning outcomes"
       },
       {
         title: "Component-Based Circuit Architecture",
@@ -708,7 +709,7 @@ export const projects = [
       "Domain-specific tools require domain-specific thinking",
       "Educational UX is fundamentally different from professional UX",
       "Collaboration with non-engineers sharpens design decisions",
-      "Simplicity is often harder — and more impactful — than complexity"
+      "Simplicity is often harder and more impactful than complexity"
     ],    
     futureWork: [
       "Assessment mode for instructors",
@@ -723,7 +724,7 @@ export const projects = [
       "How to collaborate with faculty and non-technical stakeholders",
       "How to ship tools with real-world classroom impact"
     ],    
-    finalNote: "Circuit Creations isn't just a simulator — it's an educational interface between theory and intuition. Building this as an in-house project with the EEE department taught me that the best software isn't always the most powerful — it's the most understandable."
+    finalNote: "Circuit Creations isn't just a simulator, it's an educational interface between theory and intuition. Building this as an in-house project with the EEE department taught me that the best software isn't always the most powerful, it's the most understandable."
   },
 ];
 
