@@ -739,6 +739,7 @@ export const skills = {
     "ReactJs",
     "ExpressJs",
     "JavaScript",
+    "Swift",
     "MongoDB",
     "NodeJs",
     "HTML/CSS",
