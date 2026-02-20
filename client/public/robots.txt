@@ -1,6 +1,5 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 
-# Sitemap
 Sitemap: https://nikunjmathur.vercel.app/sitemap.xml
+Host: https://nikunjmathur.vercel.app

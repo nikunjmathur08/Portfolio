@@ -228,24 +228,56 @@ export default function ProjectPage() {
       <Helmet>
         <title>{project.name} | {siteConfig.name}</title>
         <meta name="description" content={project.description} />
-        <meta name="keywords" content={project.tools.join(", ")} />
+        <meta name="robots" content="index, follow, max-image-preview:large" />
         <link rel="canonical" href={`${siteConfig.url}/projects/${project.slug}`} />
         <meta property="og:title" content={`${project.name} | ${siteConfig.name}`} />
         <meta property="og:description" content={project.description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={`${siteConfig.url}/projects/${project.slug}`} />
+        <meta property="og:image" content="https://nikunjmathur.vercel.app/og-image.png" />
+        <meta property="og:image:alt" content={`${project.name} project preview`} />
         <meta name="twitter:title" content={`${project.name} | ${siteConfig.name}`} />
         <meta name="twitter:description" content={project.description} />
+        <meta name="twitter:image" content="https://nikunjmathur.vercel.app/og-image.png" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "CreativeWork",
-            "name": project.name,
-            "description": project.description,
-            "author": { "@type": "Person", "name": siteConfig.name },
-            "dateCreated": project.year,
-            "keywords": project.tools.join(", "),
-            "url": `${siteConfig.url}/projects/${project.slug}`,
+            "@graph": [
+              {
+                "@type": "CreativeWork",
+                "@id": `${siteConfig.url}/projects/${project.slug}#project`,
+                "name": project.name,
+                "description": project.description,
+                "author": { "@type": "Person", "name": siteConfig.name },
+                "dateCreated": project.year,
+                "keywords": project.tools.join(", "),
+                "url": `${siteConfig.url}/projects/${project.slug}`,
+                "image": "https://nikunjmathur.vercel.app/og-image.png"
+              },
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": `${siteConfig.url}/`
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Projects",
+                    "item": `${siteConfig.url}/#works`
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": project.name,
+                    "item": `${siteConfig.url}/projects/${project.slug}`
+                  }
+                ]
+              }
+            ]
           })}
         </script>
       </Helmet>
@@ -301,7 +333,7 @@ export default function ProjectPage() {
             <figure className="img overflow-hidden rounded-2xl border border-secondary-400/20 hover:scale-[1.01] transition-transform duration-500">
               <img
                 src={project.image}
-                alt={project.name}
+                alt={`${project.name} hero screenshot`}
                 className="w-full h-auto object-cover"
                 loading="eager"
                 fetchPriority="high"

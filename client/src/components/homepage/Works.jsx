@@ -16,7 +16,7 @@ export default function Works({ forwardedRef }) {
         {/* Featured Project - Full Width */}
         {projects[0] && (
           <div className="col-span-1 md:col-span-12">
-            <Link to={`/projects/${projects[0].slug}`}>
+            <Link to={`/projects/${projects[0].slug}`} aria-label={`View project: ${projects[0].name}`}>
               <Projects
                 link={projects[0].link}
                 img={projects[0].image}
@@ -34,7 +34,7 @@ export default function Works({ forwardedRef }) {
         {/* Project Grid */}
         {projects[1] && (
           <div className="col-span-1 pt-0 md:col-span-7 md:pt-16">
-            <Link to={`/projects/${projects[1].slug}`}>
+            <Link to={`/projects/${projects[1].slug}`} aria-label={`View project: ${projects[1].name}`}>
               <Projects
                 link={projects[1].link}
                 img={projects[1].image}
@@ -50,7 +50,7 @@ export default function Works({ forwardedRef }) {
         
         {projects[2] && (
           <div className="col-span-1 pt-0 md:col-span-5 md:pt-80">
-            <Link to={`/projects/${projects[2].slug}`}>
+            <Link to={`/projects/${projects[2].slug}`} aria-label={`View project: ${projects[2].name}`}>
               <Projects
                 link={projects[2].link}
                 img={projects[2].image}
@@ -66,7 +66,7 @@ export default function Works({ forwardedRef }) {
         
         {projects[3] && (
           <div className="col-span-1 h-fit pt-0 md:col-span-7 md:pt-20">
-            <Link to={`/projects/${projects[3].slug}`}>
+            <Link to={`/projects/${projects[3].slug}`} aria-label={`View project: ${projects[3].name}`}>
               <Projects
                 link={projects[3].link}
                 img={projects[3].image}
@@ -82,7 +82,7 @@ export default function Works({ forwardedRef }) {
         
         {projects[4] && (
           <div className="col-span-1 h-fit md:col-span-5">
-            <Link to={`/projects/${projects[4].slug}`}>
+            <Link to={`/projects/${projects[4].slug}`} aria-label={`View project: ${projects[4].name}`}>
               <Projects
                 link={projects[4].link}
                 img={projects[4].image}
