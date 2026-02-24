@@ -42,25 +42,38 @@ export default function Contact() {
 
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
+    const timeoutController = new AbortController();
+    const timeout = setTimeout(() => timeoutController.abort(), 15000);
 
     try {
+      if (!apiURL) {
+        throw new Error("VITE_APP_API_URL is not configured");
+      }
+
       const res = await fetch(`${apiURL}/send`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: timeoutController.signal,
         body: JSON.stringify(data),
       });
+      clearTimeout(timeout);
 
       if (res.ok) {
         setButtonText("Message Sent! ^_^");
         e.target.reset();
       } else {
-        const errorData = await res.json();
+        const errorData = await res.json().catch(() => ({}));
         console.error("Server Error:", errorData);
-        setButtonText("Failed to send :(");
+        setButtonText(errorData.error || "Failed to send :(");
       }
     } catch (err) {
+      clearTimeout(timeout);
       console.error("Network Error:", err);
-      setButtonText("Network Error :(");
+      if (err.name === "AbortError") {
+        setButtonText("Request timed out :(");
+      } else {
+        setButtonText("Network Error :(");
+      }
     }
 
     setTimeout(() => {
