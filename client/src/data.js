@@ -922,5 +922,17 @@ export const awards = [
     organization: "Apple",
     period: "Mar 2026",
     highlight: "Recognized for Signie, an on-device ASL learning experience focused on private, confidence-building feedback for beginners."
+  },
+  {
+    title: "Best Overall App Award - iOS Development Center",
+    organization: "SRM Institute of Science & Technology",
+    period: "Apr 2026",
+    highlight: "Recognized for Kalaa Studio, a creative tool that helps artists generate and refine visual concepts."
+  },
+  {
+    title: "Won Alexa Developers Hackathon",
+    organization: "Alexa Developers SRM",
+    period: "Jun 2024",
+    highlight: "Recognized for Evinco, a web-app for students to track the latest happenings in the college clubs."
   }
 ];
