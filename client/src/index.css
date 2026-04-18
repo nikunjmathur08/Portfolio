@@ -4,13 +4,19 @@
 
 @layer base {
   ::-moz-selection {
-    background: #D1D1C7
+    background: #d1d1c7;
+    color: #0e0e0c;
+    text-shadow: none;
   }
   ::-webkit-selection {
-    background: #D1D1C7
+    background: #d1d1c7;
+    color: #0e0e0c;
+    text-shadow: none;
   }
   ::selection {
-    background: #D1D1C7
+    background: #d1d1c7;
+    color: #0e0e0c;
+    text-shadow: none;
   }
   .text-smooth {
     text-rendering: optimizeLegibility;

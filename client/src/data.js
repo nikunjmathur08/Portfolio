@@ -3,6 +3,7 @@ import notriskImg from "./assets/images/notrisk.webp";
 import evincoImg from "./assets/images/evinco.webp";
 import extractImg from "./assets/images/extract.webp";
 import circuitsImg from "./assets/images/circuits.webp";
+import kalaaStudioImg from "./assets/images/kalaa-studio.webp";
 
 export const siteConfig = {
   name: "Nikunj Mathur",
@@ -19,143 +20,309 @@ export const siteConfig = {
 
 export const projects = [
   {
+    slug: "kalaa-studio",
+    name: "Kalaa Studio",
+    shortName: "Kalaa Studio",
+    tagline: "Art meets wellness",
+    description: "Kalaa Studio is an iOS-based creative learning platform that transforms mandala art into a guided, calming experience. It combines structured drawing workflows with subtle visual and audio feedback to help users focus, relax, and build artistic confidence.",
+    type: "iOS App • Creative Wellness",
+    year: "2025",
+    tools: ["Swift", "SwiftUI", "UIKit", "OpenCV", "Core Graphics", "AVFoundation"],
+    image: kalaaStudioImg,
+    link: "https://apps.apple.com/in/app/kalaa-studio/id6759783810",
+    liveUrl: "https://apps.apple.com/in/app/kalaa-studio/id6759783810",
+    featured: true,
+    status: "Live on the App Store",
+    role: "Lead iOS Developer & Co-Founder",
+    team: "Team of 3",
+    platform: "iOS (iPad-first experience)",
+    tldr: {
+      what: "An iOS-first creative learning app that turns mandala art into a guided, calming creative experience",
+      who: "Beginners navigating the overwhelm of the blank canvas and wellness seekers chasing moments of intentional calm through creative practice",
+      challenge: "Designing a distraction-free creative experience that still feels interactive, supportive and true to life",
+      outcome: "Users can reliably create balanced mandalas through guided steps without feeling overwhelmed",
+      whyItMatters: "Kalaa Studio reframes art practice as a focus and wellness ritual, not just a productivity task"
+    },
+    problem: {
+      intro: "Most beginner art experiences are either too unstructured or too gamified, which makes consistency hard.",
+      points: [
+        "No clear learning path and scattered resources",
+        "Beginners struggle to maintain focus during practice",
+        "Many drawing apps prioritize features over calm workflows",
+        "Users who want a mindfulness-oriented experience are underserved"
+      ],
+      coreInsight: "For many people, confidence in art grows when the environment feels safe, calm and guided. Kalaa Studio was built ground up around that emotion."
+    },
+    nonGoals: [
+      "Compete with professional desktop illustration suites",
+      "Maximize gamification mechanics",
+      "Optimize for social sharing-heavy workflows",
+      "Support every art style from day one"
+    ],
+    systemOverview: {
+      intro: "Kalaa Studio follows a calm, structured creative loop:",
+      steps: [
+        { title: "Gamified Stages for Learning", description: "Users learn mandala step by step, from basic patterns to medium to expert designs" },
+        { title: "Templates for Practice", description: "Users can choose ready-made designs and recreate them with their own colors." },
+        { title: "Mandala Extraction", description: "Users can upload any design and practice or color it in their own way, assisted by on-device OpenCV" },
+        { title: "Community Gallery", description: "Users can share their artwork and explore creations from other artists" },
+        { title: "Canvas of Symmetry", description: "Users can freely draw and create mandalas from their own imagination." }
+      ],
+      note: "The core UX principle is intentional calm: every system decision was evaluated against distraction and cognitive load."
+    },
+    technicalDecisions: [
+      {
+        title: "SwiftUI + UIKit Hybrid Architecture",
+        points: [
+          "Used SwiftUI for layout composition, rapid iteration, and consistent design across screens",
+          "Bridged to UIKit for fine-grained control over gestures, drawing input and performance-critical interactions",
+          "Avoided forcing everything into SwiftUI where it would introduce latency or unpredictable behavior",
+          "Maintained clear separation between declarative UI layers and imperative interaction logic"
+        ],
+        outcome: "Achieved fast UI iteration without compromising responsiveness or interaction precision in a drawing-heavy environment"
+      },
+      {
+        title: "Custom Symmetry Rendering System",
+        points: [
+          "Implemented radial symmetry by mapping each stroke across multiple angular segments in real time",
+          "Normalized input coordinates relative to the canvas center to ensure consistent replication",
+          "Handled stroke interpolation and smoothing to maintain visual continuity across segments",
+          "Designed the system to be deterministic, ensuring predictable outputs for guided learning"
+        ],
+        outcome: "Enabled users to create complex, balanced mandalas effortlessly while maintaining real-time performance"
+      },
+      {
+        title: "OpenCV Integration for Visual Processing",
+        points: [
+          "Used OpenCV for deterministic image processing tasks such as contour handling and structural guidance",
+          "Integrated processing pipelines directly into the rendering loop without blocking UI threads",
+          "Prioritized reliability and consistency over experimental ML-based approaches",
+          "Optimized processing steps to work within mobile performance constraints"
+        ],
+        outcome: "Delivered stable and predictable visual guidance suitable for beginner-focused creative workflows"
+      },
+      {
+        title: "Real-Time Rendering & Input Pipeline",
+        points: [
+          "Processed Apple Pencil input with minimal latency to preserve natural drawing feel",
+          "Decoupled input handling from rendering updates to avoid frame drops",
+          "Used efficient drawing layers (Core Graphics / CAShapeLayer) to maintain smooth performance",
+          "Ensured responsiveness even as symmetry complexity increased"
+        ],
+        outcome: "Maintained fluid, uninterrupted drawing experience critical for user immersion and focus"
+      },
+      {
+        title: "Mindfulness-First Interaction Design",
+        points: [
+          "Removed non-essential UI elements to reduce cognitive load and decision fatigue",
+          "Designed feedback to be supportive, reinforcing user confidence",
+          "Structured interactions to encourage flow state rather than task completion urgency"
+        ],
+        outcome: "Created a calm, distraction-free creative environment that differentiates the product from traditional drawing tools"
+      }
+    ],
+    techStack: [
+      { label: "Language", value: "Swift" },
+      { label: "UI", value: "SwiftUI + UIKit" },
+      { label: "Image Processing", value: "OpenCV + Core Graphics" },
+      { label: "Media", value: "AVFoundation" },
+      { label: "Design", value: "Figma" },
+      { label: "Tooling", value: "Xcode" }
+    ],
+    challenges: [
+      {
+        title: "Balancing Guidance with Creative Freedom",
+        problem: "Fully guided systems risk making users feel constrained, while open canvases overwhelm beginners with too many decisions",
+        fix: "Designed a stage-based system where structure is progressively introduced, with flexibility in stroke placement and pattern variation."
+      },
+      {
+        title: "Real-Time Symmetry Without Performance Drop",
+        problem: "Replicating strokes across multiple radial segments in real time can quickly introduce latency and frame drops, especially with Apple Pencil input",
+        fix: "Optimized the rendering pipeline by normalizing input once and mapping it across segments efficiently. Decoupled input handling from rendering updates and minimized redraw regions"
+      },
+      {
+        title: "Integrating OpenCV in a Production iOS Flow",
+        problem: "OpenCV operates outside typical iOS UI pipelines, creating friction in memory handling, threading, and real-time responsiveness",
+        fix: "Established clear boundaries between CV processing and UI rendering, moved heavy operations off the main thread, and ensured deterministic outputs before passing data back to the UI layer"
+      },
+      {
+        title: "Designing for Calm, Not Engagement Loops",
+        problem: "Most creative apps rely on gamification (streaks, rewards) to drive retention, which conflicts with a calm, pressure-free experience",
+        fix: "Deliberately removed competitive mechanics and designed sessions around flow and completion satisfaction instead of external rewards"
+      },
+      {
+        title: "Reducing Cognitive Load in UI Design",
+        problem: "Feature-rich drawing apps overwhelm users with toolbars, options, and modes, especially for beginners",
+        fix: "Limited visible controls to only what's contextually necessary and deferred advanced options, keeping the interface minimal and predictable"
+      }
+    ],
+    observations: [
+      "Live on the App Store with an early audience across India, USA, Korea and New Zealand",
+      "40 downloads validated initial demand and international interest",
+      "Users respond positively to the calm, guided creative tone",
+      "iPad-first design improved drawing comfort and continuity"
+    ],
+    ethics: [
+      "Experience designed to reduce anxiety and pressure",
+      "Mindfulness-centered UX decisions over compulsive engagement loops",
+      "Clear, beginner-friendly interface choices",
+      "All visual processing runs entirely on-device, ensuring privacy, low latency and independence from network conditions",
+      "Supportive feedback patterns instead of leaderboard-driven stress"
+    ],
+    learnings: [
+      "Wellness-focused products require restraint, not feature volume",
+      "Hybrid SwiftUI/UIKit architecture can unlock both speed and control",
+      "Shipping to the App Store changes decision quality and engineering discipline",
+      "Creative tooling quality depends as much on emotional UX as technical capability"
+    ],
+    futureWork: [
+      "Expanded drawing templates and adaptive guidance modes",
+      "More personalized sound and visual ambience settings",
+      "Advanced progress tracking for long-term creative confidence",
+      "Additional accessibility refinements for broader usability"
+    ],
+    whatYouCanLearn: [
+      "How to ship a production iOS app end-to-end",
+      "How to combine SwiftUI/UIKit with OpenCV workflows",
+      "How to design mindfulness-first creative products",
+      "How to prioritize focus and calm in interaction design"
+    ],
+    finalNote: "Kalaa Studio reflects a product philosophy where creativity and wellbeing reinforce each other. Building it taught me how to translate calm, intentional design into a shippable iOS system."
+  },
+  {
     slug: "signie",
     name: "Signie - Gamified Sign Language Learning",
     shortName: "Signie",
-    tagline: "Breaking communication barriers with real-time, on-device gesture recognition",
-    description: "A gamified sign language learning application built with React Native. Uses CNNs and MediaPipe Hands for real-time hand gesture recognition to teach sign language interactively.",
-    type: "UI/UX Design • App Development • LSTM Model",
+    tagline: "Private, confidence-first ASL learning with real-time on-device feedback",
+    description: "Signie is an interactive ASL learning app that uses real-time camera tracking and on-device CoreML to provide gentle, private feedback as users practice hand signs. It gamifies the experience through structured learning stages and a supportive mascot character.",
+    type: "Award-Winning iOS App • Accessibility",
     year: "2025",
-    tools: ["React Native", "Expo", "MediaPipe Hands", "CNNs", "Firebase"],
+    tools: ["SwiftUI", "CoreML", "VisionKit", "Swift", "Xcode", "Figma"],
     image: signieImg,
-    link: "https://github.com/nikunjmathur08/Signie",
-    sourceUrl: "https://github.com/nikunjmathur08/Signie",
     featured: true,
-    status: "React Native App",
-    role: "Lead Developer & Designer",
-    team: "Trio of developers",
-    platform: "iOS & Android (React Native)",
+    status: "Apple Swift Student Challenge Winner 2026",
+    role: "Lead iOS Developer",
+    team: "Team of 3",
+    platform: "iOS (On-device ML)",
     tldr: {
-      what: "A cross-platform mobile app that teaches American Sign Language (ASL) using real-time gesture recognition",
-      who: "Beginners who lack access to interactive sign language education",
-      challenge: "Delivering low-latency, accurate gesture feedback on mobile devices",
-      outcome: "A working React Native app with real-time on-device ML inference and adaptive learning",
-      whyItMatters: "Learning a physical language without feedback is ineffective, Signie closes that loop"
+      what: "An interactive ASL learning app with camera-based real-time feedback and a supportive mascot-driven flow",
+      who: "Beginning ASL learners who want private and judgment-free practice",
+      challenge: "Reducing beginner friction and performance anxiety while preserving real-time feedback quality",
+      outcome: "A polished iOS experience recognized as a Swift Student Challenge winner",
+      whyItMatters: "Signie makes ASL practice feel safe, private and confidence-building from day one"
     },
     problem: {
-      intro: "Despite increased awareness around accessibility, learning sign language remains inaccessible for many.",
+      intro: "Beginner ASL learners often feel anxious practicing in public or without immediate feedback.",
       points: [
-        "Professional ASL courses are expensive and geographically limited",
-        "Most learning apps rely on passive content (videos, flashcards)",
-        "Learners receive no validation on whether they're signing correctly",
-        "This leads to frustration, poor retention and early drop-off"
+        "New learners hesitate due to fear of making mistakes in front of others",
+        "Many learning tools are passive and do not validate hand-shape correctness",
+        "Lack of private feedback slows confidence and consistency",
+        "Cloud-based recognition raises data privacy concerns for camera-first experiences"
       ],
-      coreInsight: "The core issue isn't content, it's feedback. Learning a physical language without real-time correction is like learning pronunciation without hearing yourself speak."
+      coreInsight: "The real barrier is not motivation, it is emotional safety during practice. Signie solves this with private, on-device feedback in a low-stakes learning environment."
     },
     nonGoals: [
       "Cover the entire ASL vocabulary",
-      "Provide professional certification or assessment",
-      "Rely on cloud-based ML inference",
-      "Optimize for large-scale commercial deployment"
+      "Replace professional ASL instruction",
+      "Depend on cloud processing for recognition",
+      "Overload users with advanced linguistic theory in early stages"
     ],
     systemOverview: {
-      intro: "At a high level, Signie works as a closed feedback loop:",
+      intro: "Signie is built around a private learning feedback loop:",
       steps: [
-        { title: "Camera Input", description: "Captures live hand movement" },
-        { title: "MediaPipe Hands", description: "Extracts 21 hand landmarks per frame" },
-        { title: "CNN Model", description: "Classifies gestures using landmark geometry" },
-        { title: "Confidence Scoring", description: "Measures accuracy and correctness" },
-        { title: "UI Feedback Layer", description: "Instantly responds with visual cues, XP and progression" }
+        { title: "Live Camera Capture", description: "Tracks hand signs in real time during practice" },
+        { title: "On-device Recognition", description: "CoreML inference runs entirely on the device" },
+        { title: "Gentle Corrective Feedback", description: "Supportive cues help users refine hand shapes" },
+        { title: "Structured Learning Stages", description: "Gamified progression keeps beginners engaged" },
+        { title: "Confidence Loop", description: "Private sessions reduce anxiety and improve repetition quality" }
       ],
       note: "All inference runs on-device, ensuring minimal latency and maximum privacy."
     },
     technicalDecisions: [
       {
-        title: "MediaPipe Hands + CNN (Instead of Raw Image Models)",
+        title: "On-device CoreML over Cloud Inference",
         points: [
-          "Raw image classification was too slow and unstable on mobile",
-          "Landmark-based input reduced dimensionality and noise",
-          "CNNs performed better on structured geometric data"
+          "Protected user privacy for camera-based practice",
+          "Avoided network dependency and enabled stable low-latency feedback",
+          "Improved trust for beginners practicing sensitive gestures at home"
         ],
-        outcome: "Faster inference, better consistency, lower compute cost"
+        outcome: "Privacy-first real-time feedback without cloud upload risk"
       },
       {
-        title: "On-Device Inference Over Cloud ML",
+        title: "SwiftUI-first UI System",
         points: [
-          "Eliminated network latency",
-          "Preserved user privacy (data never leaves device)",
-          "Enabled offline usage"
+          "Rapidly iterated interaction patterns for beginner accessibility",
+          "Maintained visual consistency across learning modules",
+          "Allowed clear and adaptive feedback states"
         ],
-        outcome: "Trade-off: Smaller models and stricter performance constraints"
+        outcome: "Fast iteration loop with a polished, approachable interface"
       },
       {
-        title: "Gamification as Retention Infrastructure",
+        title: "Supportive Gamification Instead of Competitive Mechanics",
         points: [
-          "Motivation decay after early sessions",
-          "Inconsistent practice habits",
-          "Friction during difficult signs"
+          "Introduced staged progression with low-pressure reinforcement",
+          "Used a mascot-driven tone to reduce intimidation",
+          "Focused on consistency and confidence instead of rankings"
         ],
-        outcome: "Implemented: XP-based progression, daily streaks, achievement milestones, difficulty scaling"
+        outcome: "Users can practice more frequently without fear of judgment"
       }
     ],
     techStack: [
-      { label: "Framework", value: "React Native + Expo" },
-      { label: "Vision", value: "MediaPipe Hands" },
-      { label: "ML", value: "Custom CNN trained on ASL datasets" },
-      { label: "Auth & Sync", value: "Firebase" },
-      { label: "Design", value: "Game-inspired UI with accessibility-first principles" }
+      { label: "Language", value: "Swift" },
+      { label: "UI", value: "SwiftUI" },
+      { label: "ML", value: "CoreML" },
+      { label: "Vision", value: "VisionKit" },
+      { label: "Tooling", value: "Xcode" },
+      { label: "Design", value: "Supportive, beginner-first learning UX" }
     ],
     challenges: [
       {
-        title: "Lighting & Background Sensitivity",
-        problem: "Gesture accuracy dropped significantly in low-contrast environments.",
-        fix: "Normalized landmark coordinates, ignored low-confidence frames before classification"
+        title: "Real-Time Feedback Without User Overload",
+        problem: "Too much correction can make beginners feel discouraged.",
+        fix: "Designed gentle, staged feedback patterns to keep correction helpful and emotionally safe"
       },
       {
-        title: "Mobile Performance Bottlenecks",
-        problem: "Simultaneous camera capture, inference and UI updates caused dropped frames.",
-        fix: "Frame throttling, batched inference, optimized React Native state updates"
+        title: "Balancing Performance and Privacy",
+        problem: "On-device inference must stay responsive on mobile hardware.",
+        fix: "Optimized inference and UI updates around low-latency, offline-first usage"
       },
       {
-        title: "Dataset Limitations",
-        problem: "Public ASL datasets lacked diversity in hand sizes and orientations.",
-        fix: "Augmented landmark data, tested extensively on real users"
+        title: "Beginner Retention in Skill-Based Learning",
+        problem: "Early frustration often leads to dropout in language practice apps.",
+        fix: "Added structured stages and mascot-guided encouragement to reward consistent effort"
       }
-    ],    
+    ],
     observations: [
-      "Stable real-time inference under normal lighting conditions",
-      "Consistent feedback loop without perceptible lag",
-      "Noticeably higher engagement when gamification was enabled",
-      "Clear scalability challenges for expanding gesture vocabulary"
+      "Private practice mode significantly reduces beginner hesitation",
+      "Low-latency feedback keeps practice sessions interactive and focused",
+      "Supportive gamification tone improves consistency for first-time learners",
+      "Recognition quality and emotional UX are equally important in learning outcomes"
     ],
     ethics: [
+      "Privacy is treated as a product requirement, not a feature",
       "All camera processing happens locally on the device",
       "No images or video frames are stored or transmitted",
-      "UI designed with large touch targets and clear visual feedback",
-      "Acknowledged bias risks in gesture datasets and mitigated through testing"
-    ],    
+      "Experience designed for non-judgmental, confidence-first learning"
+    ],
     learnings: [
-      "Pre-processing and problem framing often matter more than model complexity",
-      "UX mechanics can amplify or destroy the effectiveness of ML systems",
-      "Accessibility must be designed in, not added later",
-      "Real-time systems expose performance issues early and brutally",
-      "Pre-emptively loading the model can pay off dividends in app experience"
+      "Emotional safety is a core part of accessibility product design",
+      "On-device ML creates trust as well as performance benefits",
+      "Supportive UX language can materially affect retention",
+      "Award-focused builds still need strong production thinking under tight constraints"
     ],
     futureWork: [
-      "Expand gesture vocabulary using transfer learning",
-      "Support two-hand gestures",
-      "Personalized practice plans based on error patterns",
-      "Instructor / mentor review mode",
-      "Detailed analytics for learner progress"
+      "Expand supported gesture sets and lesson progression",
+      "Improve personalized guidance based on repeated error patterns",
+      "Introduce optional mentor-mode for supervised sessions",
+      "Polish accessibility features for wider learner profiles"
     ],
     whatYouCanLearn: [
-      "How to run real-time ML inference on mobile devices",
-      "How to reduce vision problems to geometric representations",
-      "How to design effective feedback loops for skill learning",
-      "How to balance ML accuracy, latency and UX",
-      "How to build accessibility-first products with AI"
+      "How to design private, confidence-first learning experiences",
+      "How to ship real-time on-device CoreML interactions",
+      "How to align accessibility and gamification thoughtfully",
+      "How to frame social impact as a core technical requirement"
     ],
-    finalNote: "Signie is not just a mobile app, it's an exploration of how AI, UX and accessibility intersect. The project demonstrates how thoughtful engineering decisions can turn complex ML systems into human-centered learning tools."
+    finalNote: "Signie represents an accessibility-first approach to ASL education where technical decisions, privacy and emotional design work together. Winning the Apple Swift Student Challenge 2026 validated both the impact and execution."
   },
   
   {
@@ -748,3 +915,12 @@ export const skills = {
     "React Native",
   ],
 };
+
+export const awards = [
+  {
+    title: "Apple Swift Student Challenge Winner 2026",
+    organization: "Apple",
+    period: "Mar 2026",
+    highlight: "Recognized for Signie, an on-device ASL learning experience focused on private, confidence-building feedback for beginners."
+  }
+];

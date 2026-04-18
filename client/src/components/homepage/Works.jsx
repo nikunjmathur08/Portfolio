@@ -95,6 +95,22 @@ export default function Works({ forwardedRef }) {
             </Link>
           </div>
         )}
+
+        {projects[5] && (
+          <div className="col-span-1 md:col-span-12 md:pt-10">
+            <Link to={`/projects/${projects[5].slug}`} aria-label={`View project: ${projects[5].name}`}>
+              <Projects
+                link={projects[5].link}
+                img={projects[5].image}
+                alt={projects[5].name}
+                name={projects[5].name}
+                type={projects[5].type}
+                year={projects[5].year}
+                tools={projects[5].tools.join(" • ")}
+              />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

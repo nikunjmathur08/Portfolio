@@ -10,6 +10,7 @@ import Hero from "./components/homepage/Hero";
 import Role from "./components/homepage/Role";
 import About from "./components/homepage/About";
 import Services from "./components/homepage/Services";
+import Awards from "./components/homepage/Awards";
 import Works from "./components/homepage/Works";
 import Contact from "./components/homepage/Contact";
 import Footer from "./components/ui/Footer";
@@ -64,7 +65,8 @@ const HomePage = () => {
           <Role forwardedRef={(el) => (sectionRefs.current[0] = el)} />
           <About />
           <Services />
-          <Works forwardedRef={(el) => (sectionRefs.current[1] = el)} />
+          <Awards forwardedRef={(el) => (sectionRefs.current[1] = el)} />
+          <Works forwardedRef={(el) => (sectionRefs.current[2] = el)} />
           <Contact />
         </main>
         <Footer />

@@ -42,21 +42,38 @@ export default function NavBar({ sectionRefs, color }) {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      sectionRefs.forEach((section) => {
-        if (!section) return;
+      const makeDarkThemeTimeline = () =>
+        gsap
+          .timeline()
+          .to(logo.current, { fill: "#DDDDD5" }, 0)
+          .to(navBar.current, { color: "#DDDDD5" })
+          .to(cta.current, { backgroundColor: "#D1D1C7", color: "#0E0E0C" }, 0)
+          .to(".bg-secondary-100", { backgroundColor: "#0E0E0C" }, 0);
+
+      const aboutSection = sectionRefs[0];
+      const awardsSection = sectionRefs[1];
+      const projectsSection = sectionRefs[2];
+
+      if (aboutSection) {
         ScrollTrigger.create({
-          trigger: section,
+          trigger: aboutSection,
           start: "top 375px",
           end: "bottom 300px",
-          animation: gsap
-            .timeline()
-            .to(logo.current, { fill: "#DDDDD5"}, 0)
-            .to(navBar.current, { color: "#DDDDD5" })
-            .to(cta.current, { backgroundColor: "#D1D1C7", color: "#0E0E0C" }, 0)
-            .to(".bg-secondary-100", { backgroundColor: "#0E0E0C" }, 0),
+          animation: makeDarkThemeTimeline(),
           toggleActions: "restart reverse restart reverse",
         });
-      });
+      }
+
+      if (awardsSection) {
+        ScrollTrigger.create({
+          trigger: awardsSection,
+          start: "top 425px",
+          endTrigger: projectsSection || awardsSection,
+          end: "bottom 300px",
+          animation: makeDarkThemeTimeline(),
+          toggleActions: "restart reverse restart reverse",
+        });
+      }
     });
     return () => ctx.revert();
   }, [sectionRefs]);
@@ -107,6 +124,10 @@ export default function NavBar({ sectionRefs, color }) {
           </Link>
           <Link to="/#services" className="group relative min-h-[44px] flex items-center">
             <span>services</span>
+            <span className="absolute bottom-0 left-0 h-[0.125em] w-0 rounded-full bg-secondary-600 duration-300 ease-in-out group-hover:w-full"></span>
+          </Link>
+          <Link to="/#awards" className="group relative min-h-[44px] flex items-center">
+            <span>awards</span>
             <span className="absolute bottom-0 left-0 h-[0.125em] w-0 rounded-full bg-secondary-600 duration-300 ease-in-out group-hover:w-full"></span>
           </Link>
           <Link to="/#works" className="group relative min-h-[44px] flex items-center">
@@ -188,12 +209,22 @@ export default function NavBar({ sectionRefs, color }) {
             projects
           </Link>
           <Link 
+            to="/#awards" 
+            onClick={handleLinkClick}
+            className={`text-3xl text-secondary-300 hover:text-white transition-all duration-300 min-h-[44px] min-w-[44px] flex items-center justify-center ${
+              isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}
+            style={{ transitionDelay: isMenuOpen ? '225ms' : '0ms' }}
+          >
+            awards
+          </Link>
+          <Link 
             to="/#contact" 
             onClick={handleLinkClick}
             className={`mt-4 px-8 py-4 bg-secondary-400 text-accent-400 rounded-full text-xl font-medium transition-all duration-300 min-h-[44px] flex items-center justify-center ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
-            style={{ transitionDelay: isMenuOpen ? '250ms' : '0ms' }}
+            style={{ transitionDelay: isMenuOpen ? '275ms' : '0ms' }}
           >
             Let's Talk.
           </Link>
