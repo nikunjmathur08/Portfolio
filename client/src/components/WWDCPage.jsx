@@ -198,41 +198,37 @@ function Gallery({ images }) {
 
       {lightbox !== null && createPortal(
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-6 md:p-10"
+          className="fixed inset-0 z-[9999] flex items-center justify-center"
           onClick={() => setLightbox(null)}
           role="dialog"
           aria-modal="true"
           aria-label="Photo lightbox"
         >
+          {/* Full-page blur + dim */}
           <div className="absolute inset-0 bg-black/75 backdrop-blur-xl" />
 
+          {/* Close — always top-right, above everything */}
+          <button
+            className="absolute right-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white/70 backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:text-white active:scale-95 md:right-6 md:top-6"
+            onClick={() => setLightbox(null)}
+            aria-label="Close lightbox"
+          >
+            <Icon icon="ph:x" width={18} />
+          </button>
+
+          {/* ── Desktop: prev/next float on sides ── */}
           {lightbox > 0 && (
             <button
-              className="absolute left-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white/80 backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:text-white active:scale-95 md:left-8"
+              className="absolute left-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white/80 backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:text-white active:scale-95 md:flex md:left-8"
               onClick={(e) => { e.stopPropagation(); setLightbox((l) => l - 1); }}
               aria-label="Previous photo"
             >
               <Icon icon="ph:caret-left" width={22} />
             </button>
           )}
-
-          <div
-            className="relative z-10 flex max-h-[88vh] w-full max-w-5xl flex-col items-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={images[lightbox]}
-              alt={`WWDC26 photo ${lightbox + 1}`}
-              className="max-h-[84vh] max-w-full rounded-2xl object-contain shadow-[0_32px_80px_rgba(0,0,0,0.6)]"
-            />
-            <p className="mt-4 font-grotesk text-sm text-white/35">
-              {lightbox + 1} / {images.length}
-            </p>
-          </div>
-
           {lightbox < images.length - 1 && (
             <button
-              className="absolute right-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white/80 backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:text-white active:scale-95 md:right-8"
+              className="absolute right-4 top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white/80 backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:text-white active:scale-95 md:flex md:right-8"
               onClick={(e) => { e.stopPropagation(); setLightbox((l) => l + 1); }}
               aria-label="Next photo"
             >
@@ -240,13 +236,47 @@ function Gallery({ images }) {
             </button>
           )}
 
-          <button
-            className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white/70 backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:text-white active:scale-95 md:right-6 md:top-6"
-            onClick={() => setLightbox(null)}
-            aria-label="Close lightbox"
+          {/* Image + mobile controls column */}
+          <div
+            className="relative z-10 flex w-full max-w-5xl flex-col items-center px-4 md:px-20"
+            onClick={(e) => e.stopPropagation()}
           >
-            <Icon icon="ph:x" width={18} />
-          </button>
+            <img
+              src={images[lightbox]}
+              alt={`WWDC26 photo ${lightbox + 1}`}
+              className="max-h-[78vh] max-w-full rounded-2xl object-contain shadow-[0_32px_80px_rgba(0,0,0,0.6)]"
+            />
+
+            {/* ── Mobile: prev / counter / next in a row below image ── */}
+            <div className="mt-4 flex w-full items-center justify-between md:hidden">
+              <button
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white/80 backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:text-white active:scale-95 disabled:opacity-30"
+                onClick={(e) => { e.stopPropagation(); setLightbox((l) => l - 1); }}
+                disabled={lightbox === 0}
+                aria-label="Previous photo"
+              >
+                <Icon icon="ph:caret-left" width={20} />
+              </button>
+
+              <p className="font-grotesk text-sm text-white/40">
+                {lightbox + 1} / {images.length}
+              </p>
+
+              <button
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white/80 backdrop-blur-sm transition-all duration-200 hover:bg-white/15 hover:text-white active:scale-95 disabled:opacity-30"
+                onClick={(e) => { e.stopPropagation(); setLightbox((l) => l + 1); }}
+                disabled={lightbox === images.length - 1}
+                aria-label="Next photo"
+              >
+                <Icon icon="ph:caret-right" width={20} />
+              </button>
+            </div>
+
+            {/* Desktop counter */}
+            <p className="mt-4 hidden font-grotesk text-sm text-white/35 md:block">
+              {lightbox + 1} / {images.length}
+            </p>
+          </div>
         </div>,
         document.body
       )}
@@ -306,6 +336,7 @@ function LearningsBento({ learnings }) {
               <span
                 aria-hidden="true"
                 className="select-none font-general text-[3.5rem] font-bold leading-none text-secondary-400/[0.07]"
+                style={{ WebkitTextStroke: '1px rgb(164, 164, 158)', WebkitTextFillColor: 'transparent' }}
               >
                 {String(i + 1).padStart(2, "0")}
               </span>

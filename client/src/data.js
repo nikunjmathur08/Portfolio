@@ -1006,7 +1006,7 @@ export const wwdc = {
   ],
   highlights: [
     { label: "Selected", value: "Globally Top 350" },
-    { label: "App that earned the invite", value: "Signie" },
+    { label: "App", value: "Signie" },
     { label: "Location", value: "Apple Park, CA" },
     { label: "Year", value: "2026" },
   ],
