@@ -11,10 +11,12 @@ import Role from "./components/homepage/Role";
 import About from "./components/homepage/About";
 import Services from "./components/homepage/Services";
 import Awards from "./components/homepage/Awards";
+import Experience from "./components/homepage/Experience";
 import Works from "./components/homepage/Works";
 import Contact from "./components/homepage/Contact";
 import Footer from "./components/ui/Footer";
 import ProjectPage from "./components/ProjectPage";
+import WWDCPage from "./components/WWDCPage";
 import { siteConfig } from "./data";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,7 +68,8 @@ const HomePage = () => {
           <About />
           <Services />
           <Awards forwardedRef={(el) => (sectionRefs.current[1] = el)} />
-          <Works forwardedRef={(el) => (sectionRefs.current[2] = el)} />
+          <Experience forwardedRef={(el) => (sectionRefs.current[2] = el)} />
+          <Works forwardedRef={(el) => (sectionRefs.current[3] = el)} />
           <Contact />
         </main>
         <Footer />
@@ -127,6 +130,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/projects/:slug" element={<ProjectPage />} />
+      <Route path="/wwdc" element={<WWDCPage />} />
     </Routes>
   );
 };

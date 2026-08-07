@@ -34,7 +34,7 @@ export default function Contact() {
       setTime(new Date().toLocaleTimeString());
     }, 1000);
     return () => clearInterval(timer);
-  });
+  }, []);
 
   const sendEmail = async (e) => {
     e.preventDefault();

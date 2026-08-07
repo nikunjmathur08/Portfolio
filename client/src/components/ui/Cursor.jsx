@@ -3,94 +3,72 @@ import { useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 
 export default function Cursor() {
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const [pos, setPos] = useState({ x: -200, y: -200 });
   const curs = useRef(null);
   const svg = useRef(null);
-
   const location = useLocation();
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const handleMouseOver = (e) => {
-        const target = e.target.closest(".img");
-        if (target) {
-          // Emulate mouseenter: only play if coming from outside the target
-          if (!e.relatedTarget || !target.contains(e.relatedTarget)) {
-            const size = target.dataset.cursorSize || "112px";
-            
-            gsap.to(curs.current, {
-              height: size,
-              width: size,
-              duration: 0.5,
-              ease: "expo.out",
-              overwrite: "auto",
-            });
-            
-            gsap.to(svg.current, {
-              opacity: 1,
-              width: "96px",
-              height: "96px",
-              duration: 0.5,
-              ease: "expo.out",
-              overwrite: "auto",
-            });
-          }
-        }
-      };
-
-      const handleMouseOut = (e) => {
-        const target = e.target.closest(".img");
-        if (target) {
-          // Emulate mouseleave: only reverse if going outside the target
-          if (!e.relatedTarget || !target.contains(e.relatedTarget)) {
-            gsap.to(curs.current, {
-              height: "12px",
-              width: "12px",
-              duration: 0.5,
-              ease: "expo.out",
-              overwrite: "auto",
-            });
-            
-            gsap.to(svg.current, {
-              opacity: 0,
-              duration: 0.5,
-              ease: "expo.out",
-              overwrite: "auto",
-            });
-          }
-        }
-      };
-
-      document.addEventListener("mouseover", handleMouseOver);
-      document.addEventListener("mouseout", handleMouseOut);
-
-      return () => {
-        document.removeEventListener("mouseover", handleMouseOver);
-        document.removeEventListener("mouseout", handleMouseOut);
-      };
-    });
-
-    return () => ctx.revert();
-  }, []);
+  const isDetailPage =
+    location.pathname === "/wwdc" ||
+    location.pathname.startsWith("/projects/");
 
   useEffect(() => {
-    function moveCursor(e) {
-      setCursor({ x: e.clientX, y: e.clientY });
+    if (!curs.current || !svg.current) return;
+    gsap.killTweensOf([curs.current, svg.current]);
+    gsap.set(curs.current, { width: "12px", height: "12px" });
+    gsap.set(svg.current, { opacity: 0, width: "24px", height: "24px" });
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (isDetailPage) return;
+    function handleMouseOver(e) {
+      const target = e.target.closest(".img");
+      if (!target) return;
+      if (e.relatedTarget && target.contains(e.relatedTarget)) return;
+
+      const size = target.dataset.cursorSize || "112px";
+      gsap.killTweensOf([curs.current, svg.current]);
+      gsap.to(curs.current, { width: size, height: size, duration: 0.45, ease: "expo.out" });
+      gsap.to(svg.current, { opacity: 1, width: "96px", height: "96px", duration: 0.45, ease: "expo.out" });
     }
-    document.addEventListener("mousemove", moveCursor);
+
+    function handleMouseOut(e) {
+      const target = e.target.closest(".img");
+      if (!target) return;
+      if (e.relatedTarget && target.contains(e.relatedTarget)) return;
+
+      gsap.killTweensOf([curs.current, svg.current]);
+      gsap.to(curs.current, { width: "12px", height: "12px", duration: 0.45, ease: "expo.out" });
+      gsap.to(svg.current, { opacity: 0, duration: 0.45, ease: "expo.out" });
+    }
+
+    document.addEventListener("mouseover", handleMouseOver);
+    document.addEventListener("mouseout", handleMouseOut);
 
     return () => {
-      document.removeEventListener("mousemove", moveCursor);
+      document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseout", handleMouseOut);
+      if (curs.current && svg.current) {
+        gsap.killTweensOf([curs.current, svg.current]);
+        gsap.set(curs.current, { width: "12px", height: "12px" });
+        gsap.set(svg.current, { opacity: 0, width: "24px", height: "24px" });
+      }
     };
-  }, []);
+  }, [isDetailPage]);
 
-  const { x, y } = cursor;
+  useEffect(() => {
+    function onMouseMove(e) {
+      setPos({ x: e.clientX, y: e.clientY });
+    }
+    document.addEventListener("mousemove", onMouseMove);
+    return () => document.removeEventListener("mousemove", onMouseMove);
+  }, []);
 
   return (
     <div
       ref={curs}
-      className="cursor pointer-events-none fixed left-1/2 top-1/2 z-[999] hidden h-3 w-3 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-secondary-600 sm:flex"
-      style={{ left: `${x}px`, top: `${y}px` }}
+      className="cursor pointer-events-none fixed z-[10000] hidden h-3 w-3 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-secondary-600 sm:flex"
+      style={{ left: `${pos.x}px`, top: `${pos.y}px` }}
     >
       <svg
         ref={svg}

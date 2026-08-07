@@ -3,12 +3,13 @@ import { Link, useLocation } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function NavBar({ sectionRefs, color }) {
   const navBar = useRef(null);
   const logo = useRef(null);
   const cta = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  gsap.registerPlugin(ScrollTrigger);
   const location = useLocation();
 
   // Close menu on route change
@@ -52,7 +53,8 @@ export default function NavBar({ sectionRefs, color }) {
 
       const aboutSection = sectionRefs[0];
       const awardsSection = sectionRefs[1];
-      const projectsSection = sectionRefs[2];
+      const experienceSection = sectionRefs[2];
+      const projectsSection = sectionRefs[3];
 
       if (aboutSection) {
         ScrollTrigger.create({
@@ -130,6 +132,10 @@ export default function NavBar({ sectionRefs, color }) {
             <span>awards</span>
             <span className="absolute bottom-0 left-0 h-[0.125em] w-0 rounded-full bg-secondary-600 duration-300 ease-in-out group-hover:w-full"></span>
           </Link>
+          <Link to="/#experience" className="group relative min-h-[44px] flex items-center">
+            <span>experience</span>
+            <span className="absolute bottom-0 left-0 h-[0.125em] w-0 rounded-full bg-secondary-600 duration-300 ease-in-out group-hover:w-full"></span>
+          </Link>
           <Link to="/#works" className="group relative min-h-[44px] flex items-center">
             <span>projects</span>
             <span className="absolute bottom-0 left-0 h-[0.125em] w-0 rounded-full bg-secondary-600 duration-300 ease-in-out group-hover:w-full"></span>
@@ -199,24 +205,34 @@ export default function NavBar({ sectionRefs, color }) {
             services
           </Link>
           <Link 
-            to="/#works" 
+            to="/#awards" 
+            onClick={handleLinkClick}
+            className={`text-3xl text-secondary-300 hover:text-white transition-all duration-300 min-h-[44px] min-w-[44px] flex items-center justify-center ${
+              isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}
+            style={{ transitionDelay: isMenuOpen ? '175ms' : '0ms' }}
+          >
+            awards
+          </Link>
+          <Link 
+            to="/#experience" 
             onClick={handleLinkClick}
             className={`text-3xl text-secondary-300 hover:text-white transition-all duration-300 min-h-[44px] min-w-[44px] flex items-center justify-center ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
             style={{ transitionDelay: isMenuOpen ? '200ms' : '0ms' }}
           >
-            projects
+            experience
           </Link>
           <Link 
-            to="/#awards" 
+            to="/#works" 
             onClick={handleLinkClick}
             className={`text-3xl text-secondary-300 hover:text-white transition-all duration-300 min-h-[44px] min-w-[44px] flex items-center justify-center ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
             }`}
             style={{ transitionDelay: isMenuOpen ? '225ms' : '0ms' }}
           >
-            awards
+            projects
           </Link>
           <Link 
             to="/#contact" 

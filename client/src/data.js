@@ -916,6 +916,119 @@ export const skills = {
   ],
 };
 
+export const experience = [
+  {
+    company: "Fidelity Investments",
+    role: "Software Development Intern",
+    period: "May 2026 - Jul 2026",
+    location: "Bangalore, India",
+    type: "Internship",
+    current: false,
+    description: "Built internal tooling for Fidelity's case-management platform and led an accessibility audit across their frontend ecosystem.",
+    skills: ["Angular", "Spring Boot", "Java", "TypeScript", "Accessibility"],
+  },
+  {
+    company: "Infosys",
+    role: "iOS Development Intern",
+    period: "Mar 2026",
+    location: "Mysore, India",
+    type: "Internship",
+    current: false,
+    description: "Scrum Master and developer in a 10-member team building a fleet-management iOS application over 4 sprints.",
+    skills: ["Swift", "SwiftUI", "CoreLocation", "Scrum"],
+    sourceUrl: "https://github.com/FMS-T8/FMS",
+  },
+  {
+    company: "LeanImpeccable Technologies",
+    role: "Full-Stack AI/ML Engineer Intern",
+    period: "Jul 2025 - Oct 2025",
+    location: "Chennai, India",
+    type: "Internship",
+    current: false,
+    description: "Engineered a unified frontend platform merging outputs from three ML models into a floor-plan analysis tool used in production.",
+    skills: ["React", "Python", "FastAPI", "YOLOv8", "Detectron2", "OpenCV"],
+    sourceUrl: "https://github.com/nikunjmathur08/IntoAEC",
+  },
+  {
+    company: "Trench Inc.",
+    role: "Frontend Intern",
+    period: "Aug 2025 - Nov 2025",
+    location: "Bangalore, India",
+    type: "Internship",
+    current: false,
+    description: "Built and optimised the responsive frontend for a Solana-based decentralised trading platform.",
+    skills: ["React", "TypeScript", "Solana", "Web3", "TailwindCSS"],
+    liveUrl: "https://app.trench.ag/markets",
+  },
+  {
+    company: "Ernst & Young",
+    role: "LLMs & Generative AI Intern",
+    period: "Jun 2025 - Jul 2025",
+    location: "Delhi, India",
+    type: "Internship",
+    current: false,
+    description: "Built a terminal-based scraping agent powered by a locally-running LLaMA 3.1 8B model, adopted as an internal EY tool.",
+    skills: ["Python", "LLaMA 3.1", "Ollama", "Crawl4AI", "Prompt Engineering"],
+    sourceUrl: "https://github.com/nikunjmathur08/Smart_Extractor",
+  },
+];
+
+export const wwdc = {
+  year: "2026",
+  badge: "Swift Student Challenge Winner",
+  title: "WWDC26",
+  subtitle: "Apple Park, Cupertino, California",
+  intro: "One of 350 developers selected globally as an Apple Swift Student Challenge Winner, earning an invitation to attend WWDC26 at Apple Park. A week of sessions, hands-on labs and connections with Apple engineers that redefined how I think about building software.",
+  stat: "350",
+  statLabel: "winners worldwide",
+  context: "Signie, an on-device ASL learning app - was the submission that earned this invitation. Getting to share it with Apple engineers and fellow winners from across the globe at Apple Park made all the efforts worth it.",
+  learnings: [
+    {
+      title: "Design is a first-class citizen",
+      body: "WWDC reinforced that great Apple apps aren't distinguished by aesthetics alone - they emerge from thoughtful design, platform conventions, motion, accessibility and consistency working together. I left viewing design as an engineering discipline rather than the final layer of a product.",
+    },
+    {
+      title: "Privacy should shape architecture from day one",
+      body: "Conversations with Apple engineers reaffirmed the philosophy begind Signie - keeping inference entirely on-device isn't merely an implementation details, it's a product decision that buids trust. Privacy became something to architect for from the beginning, not a retrofit later.",
+    },
+    {
+      title: "Modern Swift rewards simplicity",
+      body: "Hands-on labs demonstrated how Swift Concurrency, Observation and newer platform APIs dramatically reduce internal complexity. Instead of writing infrastructure code to manage state and asynchronous workflows, I could focus more of my effort on solving the actual product problem.",
+    },
+    {
+      title: "Real products create meaningful conversations",
+      body: "Almost every technical discussion began with a simple question: 'What have you built?' Having a production app in users' hands transformed conversations from hypothetical ideas into concrete design decisions, trade-offs and the lessons learned. Shipping taught me far more than prototyping ever could.",
+    },
+    {
+      title: "The strongest ideas emerge through community",
+      body: "Meeting hundreds of Swift Student Challenge winners from around the world exposed me to radically different approaches to design, accessibility, machine learning and product thinking. The exchange of perspectives proved just as valuable as the sessions themselves, reminding me that great software is often shaped collaboratively.",
+    },
+  ],
+  highlights: [
+    { label: "Selected", value: "Globally Top 350" },
+    { label: "App that earned the invite", value: "Signie" },
+    { label: "Location", value: "Apple Park, CA" },
+    { label: "Year", value: "2026" },
+  ],
+  images: [
+    "/src/assets/images/wwdc/img1.webp",
+    "/src/assets/images/wwdc/img2.webp",
+    "/src/assets/images/wwdc/img3.webp",
+    "/src/assets/images/wwdc/img4.webp",
+    "/src/assets/images/wwdc/img5.webp",
+    "/src/assets/images/wwdc/img6.webp",
+    "/src/assets/images/wwdc/img7.webp",
+    "/src/assets/images/wwdc/img8.webp",
+    "/src/assets/images/wwdc/img9.webp",
+    "/src/assets/images/wwdc/img10.webp",
+    "/src/assets/images/wwdc/img11.webp",
+    "/src/assets/images/wwdc/img12.webp",
+    "/src/assets/images/wwdc/img13.webp",
+    "/src/assets/images/wwdc/img14.webp",
+    "/src/assets/images/wwdc/img15.webp",
+  ],
+};
+
 export const awards = [
   {
     title: "Apple Swift Student Challenge Winner 2026",

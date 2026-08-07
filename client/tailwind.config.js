@@ -70,12 +70,21 @@ export default {
             opacity: '1',
             transform: 'scale(1)'
           }
+        },
+        'gradient-flow': {
+          '0%': {
+            backgroundPosition: '0% 50%',
+          },
+          '100%': {
+            backgroundPosition: '200% 50%',
+          },
         }
       },
       animation: {
         'fade-in-up': 'fade-in-up 0.6s ease-out forwards',
         'fade-in': 'fade-in 0.5s ease-out forwards',
-        'scale-in': 'scale-in 0.5s ease-out forwards'
+        'scale-in': 'scale-in 0.5s ease-out forwards',
+        'gradient-flow': 'gradient-flow 5s linear infinite',
       }
     }
   },
