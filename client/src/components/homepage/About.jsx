@@ -60,15 +60,10 @@ export default function About() {
               I am a tech enthusiast since middle school and love to interact with technology!
 
               <br></br>
-              <br></br>I have set up my path to pursue the things that excite me the 
-              most! Working on code has now become my passion and I look forward to 
-              convert it into my profession. 😎
+              <br></br>I build iOS apps — from on-device ML experiences to App Store-shipped products — with Swift and SwiftUI at the core. I care deeply about the intersection of clean engineering and intentional design: software that feels as good as it works.
               <br></br>
               <br></br>
-              I am currently pursuing a bachelor's degree focused on Computer Science 
-              Engineering. Interested in Web Development, iOS Development & using AI to 
-              my advantage, I would love to be a part of a diverse team of people working 
-              on areas that are in my interest.
+              I bring a full-stack background from years of working across React, Node.js and the broader web ecosystem, which means I can prototype fast, own the product end-to-end, and collaborate well across the stack. But iOS is where I do my best work — and where I'm heading.
             </p>
           </div>
         </div>

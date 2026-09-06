@@ -84,4 +84,42 @@
   .section-heading {
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
   }
+
+  /* WWDC26 rainbow gradient border hover */
+  .wwdc-card {
+    position: relative;
+    isolation: isolate;
+  }
+  .wwdc-card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      #F4C542,
+      #F28A3D,
+      #E85B55,
+      #B967C7,
+      #4C8FE8,
+      #68C9A5,
+      #F4C542
+    );
+    background-size: 300% 300%;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+    animation: wwdc-gradient-shift 4s linear infinite;
+    animation-play-state: paused;
+  }
+  .wwdc-card:hover::before {
+    opacity: 0.75;
+    animation-play-state: running;
+  }
+
+  @keyframes wwdc-gradient-shift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 }

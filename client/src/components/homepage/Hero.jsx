@@ -7,7 +7,8 @@ export default function Hero() {
   const imgContainer = useRef(null);
   const titles = useRef([]);
   const scrollLine = useRef(null);
-  const scroll = useRef(null)
+  const scroll = useRef(null);
+  const tagline = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -39,6 +40,12 @@ export default function Hero() {
         "-=2.5"
       )
       .fromTo(
+        tagline.current,
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 1, ease: "power4.out" },
+        "-=1.2"
+      )
+      .fromTo(
         scroll.current,
         { opacity: 0 },
         { opacity: 1, duration: 1, ease: "out" },
@@ -67,6 +74,12 @@ export default function Hero() {
             Hey, I'm Nikunj
           </h1>
         </div>
+        <p
+          ref={tagline}
+          className="opacity-0 mt-4 2xl:mt-8 px-4 text-center text-body-1 2xl:text-3xl font-grotesk font-normal normal-case tracking-normal text-secondary-600 max-w-2xl 2xl:max-w-4xl"
+        >
+          iOS Developer · Product Engineer — Building thoughtful products across Swift, AI &amp; the web
+        </p>
       </div>
       <div
         ref={imgContainer}

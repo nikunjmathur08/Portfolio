@@ -9,7 +9,7 @@ export default function Awards({ forwardedRef }) {
         {awards.map((award, index) => (
           <article
             key={`${award.title}-${index}`}
-            className="rounded-2xl border border-secondary-400/20 bg-secondary-400/5 p-6 md:p-8"
+            className={`rounded-2xl border border-secondary-400/20 bg-secondary-400/5 p-6 md:p-8${index === 0 ? " wwdc-card" : ""}`}
           >
             <div className="flex flex-wrap items-center gap-3 md:gap-4">
               <p className="rounded-full border border-secondary-600 px-4 py-1 text-body-4 text-secondary-600">

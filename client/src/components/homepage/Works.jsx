@@ -13,7 +13,7 @@ export default function Works({ forwardedRef }) {
     >
       <Heading title="Projects" />
       <div className="mt-10 grid grid-cols-1 gap-16 gap-y-10 md:grid-cols-12">
-        {/* Featured Project - Full Width */}
+        {/* Featured Project 1 — Kalaa Studio — Full Width */}
         {projects[0] && (
           <div className="col-span-1 md:col-span-12">
             <Link to={`/projects/${projects[0].slug}`} aria-label={`View project: ${projects[0].name}`}>
@@ -30,10 +30,10 @@ export default function Works({ forwardedRef }) {
             </Link>
           </div>
         )}
-        
-        {/* Project Grid */}
+
+        {/* Featured Project 2 — Signie — Full Width */}
         {projects[1] && (
-          <div className="col-span-1 pt-0 md:col-span-7 md:pt-16">
+          <div className="col-span-1 md:col-span-12">
             <Link to={`/projects/${projects[1].slug}`} aria-label={`View project: ${projects[1].name}`}>
               <Projects
                 link={projects[1].link}
@@ -47,9 +47,10 @@ export default function Works({ forwardedRef }) {
             </Link>
           </div>
         )}
-        
+
+        {/* Project Grid — remaining projects */}
         {projects[2] && (
-          <div className="col-span-1 pt-0 md:col-span-5 md:pt-80">
+          <div className="col-span-1 pt-0 md:col-span-7 md:pt-16">
             <Link to={`/projects/${projects[2].slug}`} aria-label={`View project: ${projects[2].name}`}>
               <Projects
                 link={projects[2].link}
@@ -63,9 +64,9 @@ export default function Works({ forwardedRef }) {
             </Link>
           </div>
         )}
-        
+
         {projects[3] && (
-          <div className="col-span-1 h-fit pt-0 md:col-span-7 md:pt-20">
+          <div className="col-span-1 pt-0 md:col-span-5 md:pt-80">
             <Link to={`/projects/${projects[3].slug}`} aria-label={`View project: ${projects[3].name}`}>
               <Projects
                 link={projects[3].link}
@@ -79,9 +80,9 @@ export default function Works({ forwardedRef }) {
             </Link>
           </div>
         )}
-        
+
         {projects[4] && (
-          <div className="col-span-1 h-fit md:col-span-5">
+          <div className="col-span-1 h-fit pt-0 md:col-span-7 md:pt-20">
             <Link to={`/projects/${projects[4].slug}`} aria-label={`View project: ${projects[4].name}`}>
               <Projects
                 link={projects[4].link}
@@ -97,7 +98,7 @@ export default function Works({ forwardedRef }) {
         )}
 
         {projects[5] && (
-          <div className="col-span-1 md:col-span-12 md:pt-10">
+          <div className="col-span-1 h-fit md:col-span-5">
             <Link to={`/projects/${projects[5].slug}`} aria-label={`View project: ${projects[5].name}`}>
               <Projects
                 link={projects[5].link}

@@ -7,8 +7,8 @@ import kalaaStudioImg from "./assets/images/kalaa-studio.webp";
 
 export const siteConfig = {
   name: "Nikunj Mathur",
-  title: "Nikunj Mathur - Frontend Developer & Designer",
-  description: "Frontend developer and designer based in New Delhi, India. Specializing in React, React Native and creating digital experiences that inspire and connect.",
+  title: "Nikunj Mathur — iOS Developer · Product Engineer",
+  description: "iOS Developer · Product Engineer based in New Delhi, India — Building thoughtful products across Swift, AI & the web.",
   url: "https://nikunjmathur.vercel.app",
   email: "nikunjmathur0810@gmail.com",
   social: {
@@ -897,16 +897,20 @@ export const projects = [
 
 export const skills = {
   expertise: [
+    "iOS Development",
     "Full Stack Dev",
     "Web Design",
     "UI/UX Design",
     "App Development",
   ],
   tools: [
+    "Swift",
+    "SwiftUI",
+    "CoreML",
+    "VisionKit",
     "ReactJs",
     "ExpressJs",
     "JavaScript",
-    "Swift",
     "MongoDB",
     "NodeJs",
     "HTML/CSS",
@@ -1049,3 +1053,29 @@ export const awards = [
     highlight: "Recognized for Evinco, a web-app for students to track the latest happenings in the college clubs."
   }
 ];
+
+export const experience = [
+  {
+    title: "iOS Development Intern",
+    company: "Infosys",
+    period: "2024",
+    type: "iOS Development",
+    highlights: [
+      "Built and shipped iOS features using Swift and UIKit within an Agile team environment",
+      "Worked closely with design and product stakeholders to translate requirements into polished mobile interfaces",
+      "Gained hands-on experience with iOS app architecture, performance profiling, and App Store submission workflows",
+    ],
+  },
+  {
+    title: "Software Development Intern",
+    company: "Fidelity Investments",
+    period: "2024",
+    type: "Software Development",
+    highlights: [
+      "Contributed to full-stack web features using React and Node.js in a large-scale financial services environment",
+      "Collaborated across cross-functional teams to deliver features aligned with product and compliance requirements",
+      "Strengthened understanding of scalable system design and enterprise engineering practices",
+    ],
+  },
+];
+
