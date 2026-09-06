@@ -922,16 +922,6 @@ export const skills = {
 
 export const experience = [
   {
-    company: "Fidelity Investments",
-    role: "Software Development Intern",
-    period: "May 2026 - Jul 2026",
-    location: "Bangalore, India",
-    type: "Internship",
-    current: false,
-    description: "Built internal tooling for Fidelity's case-management platform and led an accessibility audit across their frontend ecosystem.",
-    skills: ["Angular", "Spring Boot", "Java", "TypeScript", "Accessibility"],
-  },
-  {
     company: "Infosys",
     role: "iOS Development Intern",
     period: "Mar 2026",
@@ -941,6 +931,16 @@ export const experience = [
     description: "Scrum Master and developer in a 10-member team building a fleet-management iOS application over 4 sprints.",
     skills: ["Swift", "SwiftUI", "CoreLocation", "Scrum"],
     sourceUrl: "https://github.com/FMS-T8/FMS",
+  },
+  {
+    company: "Fidelity Investments",
+    role: "Software Development Intern",
+    period: "May 2026 - Jul 2026",
+    location: "Bangalore, India",
+    type: "Internship",
+    current: false,
+    description: "Built internal tooling for Fidelity's case-management platform and led an accessibility audit across their frontend ecosystem.",
+    skills: ["Angular", "Spring Boot", "Java", "TypeScript", "Accessibility"],
   },
   {
     company: "LeanImpeccable Technologies",
@@ -1052,30 +1052,5 @@ export const awards = [
     period: "Jun 2024",
     highlight: "Recognized for Evinco, a web-app for students to track the latest happenings in the college clubs."
   }
-];
-
-export const experience = [
-  {
-    title: "iOS Development Intern",
-    company: "Infosys",
-    period: "2024",
-    type: "iOS Development",
-    highlights: [
-      "Built and shipped iOS features using Swift and UIKit within an Agile team environment",
-      "Worked closely with design and product stakeholders to translate requirements into polished mobile interfaces",
-      "Gained hands-on experience with iOS app architecture, performance profiling, and App Store submission workflows",
-    ],
-  },
-  {
-    title: "Software Development Intern",
-    company: "Fidelity Investments",
-    period: "2024",
-    type: "Software Development",
-    highlights: [
-      "Contributed to full-stack web features using React and Node.js in a large-scale financial services environment",
-      "Collaborated across cross-functional teams to deliver features aligned with product and compliance requirements",
-      "Strengthened understanding of scalable system design and enterprise engineering practices",
-    ],
-  },
 ];
 

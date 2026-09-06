@@ -85,41 +85,18 @@
     clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%);
   }
 
-  /* WWDC26 rainbow gradient border hover */
+  /* WWDC card — gradient glow around the card via box-shadow (never over content) */
   .wwdc-card {
-    position: relative;
-    isolation: isolate;
+    border-radius: 1rem;
+    transition: box-shadow 0.5s ease;
   }
-  .wwdc-card::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    background: linear-gradient(
-      135deg,
-      #F4C542,
-      #F28A3D,
-      #E85B55,
-      #B967C7,
-      #4C8FE8,
-      #68C9A5,
-      #F4C542
-    );
-    background-size: 300% 300%;
-    opacity: 0;
-    z-index: -1;
-    transition: opacity 0.4s ease;
-    animation: wwdc-gradient-shift 4s linear infinite;
-    animation-play-state: paused;
-  }
-  .wwdc-card:hover::before {
-    opacity: 0.75;
-    animation-play-state: running;
-  }
-
-  @keyframes wwdc-gradient-shift {
-    0%   { background-position: 0% 50%; }
-    50%  { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  .wwdc-card:hover {
+    box-shadow:
+      -14px -6px 28px -6px rgba(244, 197, 66, 0.45),
+      0px  -14px 28px -6px rgba(242, 138, 61, 0.38),
+      14px  -6px 28px -6px rgba(232, 91, 85, 0.35),
+      16px   0px 28px -6px rgba(185, 103, 199, 0.32),
+      14px  12px 28px -6px rgba(76, 143, 232, 0.4),
+      0px   16px 28px -6px rgba(104, 201, 165, 0.38);
   }
 }

@@ -25,14 +25,14 @@ function WWDCCard({ cardRef }) {
   const navigate = useNavigate();
 
   return (
-    <div ref={cardRef} style={{ opacity: 0 }}>
+    <div ref={cardRef} style={{ opacity: 0 }} className="wwdc-card rounded-2xl">
       <div
         onClick={() => navigate("/wwdc")}
         onKeyDown={(e) => e.key === "Enter" && navigate("/wwdc")}
         role="button"
         tabIndex={0}
         aria-label="WWDC26 at Apple Park — click to read the full story"
-        className="img group relative flex min-h-[400px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-secondary-400/10 bg-secondary-400/[0.03] transition-colors duration-300 hover:border-secondary-400/30 md:min-h-[320px] md:flex-row"
+        className="img group relative flex min-h-[400px] cursor-pointer flex-col overflow-hidden rounded-2xl border border-secondary-400/10 transition-colors duration-300 hover:border-secondary-400/30 md:min-h-[320px] md:flex-row"
       >
         <div className="flex flex-1 flex-col justify-between p-7 md:p-10">
           <div>
@@ -109,7 +109,7 @@ function ExperienceCard({ item, cardRef }) {
     <div
       ref={cardRef}
       style={{ opacity: 0 }}
-      className="flex h-full flex-col justify-between rounded-2xl border border-secondary-400/10 bg-secondary-400/[0.03] p-6 md:p-8"
+      className="flex h-full flex-col justify-between rounded-2xl border border-secondary-400/10 p-6 md:p-8"
     >
       <div>
         <div className="flex items-start justify-between gap-4">
