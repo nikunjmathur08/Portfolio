@@ -60,10 +60,10 @@ export default function About() {
               I am a tech enthusiast since middle school and love to interact with technology!
 
               <br></br>
-              <br></br>I build iOS apps — from on-device ML experiences to App Store-shipped products — with Swift and SwiftUI at the core. I care deeply about the intersection of clean engineering and intentional design: software that feels as good as it works.
+              <br></br>I build iOS apps, from on-device ML experiences to App Store-shipped products — with Swift and SwiftUI at the core. I care deeply about the intersection of clean engineering and intentional design: software that feels as good as it works.
               <br></br>
               <br></br>
-              I bring a full-stack background from years of working across React, Node.js and the broader web ecosystem, which means I can prototype fast, own the product end-to-end, and collaborate well across the stack. But iOS is where I do my best work — and where I'm heading.
+              I bring a full-stack background from years of working across React, Node.js and the broader web ecosystem, which means I can prototype fast, own the product end-to-end, and collaborate well across the stack. But iOS is where I do my best work and where I'm heading.
             </p>
           </div>
         </div>

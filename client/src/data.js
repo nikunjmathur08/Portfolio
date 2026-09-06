@@ -901,7 +901,6 @@ export const skills = {
     "Full Stack Dev",
     "Web Design",
     "UI/UX Design",
-    "App Development",
   ],
   tools: [
     "Swift",
@@ -910,7 +909,7 @@ export const skills = {
     "VisionKit",
     "ReactJs",
     "ExpressJs",
-    "JavaScript",
+    "TypeScript",
     "MongoDB",
     "NodeJs",
     "HTML/CSS",

@@ -76,7 +76,7 @@ export default function Hero() {
         </div>
         <p
           ref={tagline}
-          className="opacity-0 mt-4 2xl:mt-8 px-4 text-center text-body-1 2xl:text-3xl font-grotesk font-normal normal-case tracking-normal text-secondary-600 max-w-2xl 2xl:max-w-4xl"
+          className="opacity-0 mt-4 2xl:mt-8 px-4 text-center text-body-1 2xl:text-3xl font-grotesk font-normal normal-case tracking-normal text-primary-600 max-w-2xl 2xl:max-w-4xl"
         >
           iOS Developer · Product Engineer — Building thoughtful products across Swift, AI &amp; the web
         </p>
